@@ -28,7 +28,10 @@ namespace FlightSimulatorApp.Views
         private Point firstPoint = new Point();
         private void Knob_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left) { firstPoint = e.GetPosition(this); }
+            if (e.ChangedButton == MouseButton.Left) {
+                Knob.CaptureMouse();
+                firstPoint = e.GetPosition(this); 
+            }
         }
 
         private void Knob_MouseMove(object sender, MouseEventArgs e)
@@ -52,14 +55,13 @@ namespace FlightSimulatorApp.Views
         {
             knobPosition.X = 0;
             knobPosition.Y = 0;
+            Knob.ReleaseMouseCapture();
         }
 
-        private void Ellipse_MouseLeave(object sender, MouseEventArgs e)
+        private void Knob_MouseLeave(object sender, MouseEventArgs e)
         {
-        }
-
-        private void Ellipse_MouseEnter(object sender, MouseEventArgs e)
-        {
+            knobPosition.X = 0;
+            knobPosition.Y = 0;
         }
     }
 }

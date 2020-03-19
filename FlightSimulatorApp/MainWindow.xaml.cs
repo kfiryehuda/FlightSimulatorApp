@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Forms;
+using FlightSimulatorApp.Models;
+using FlightSimulatorApp.ViewModel;
 
 namespace FlightSimulatorApp
 {
@@ -21,26 +23,12 @@ namespace FlightSimulatorApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        private FlightGearViewModel vm;
         public MainWindow()
         {
             InitializeComponent();
+            vm = new FlightGearViewModel(new FlightGearModel(new Client()));
+            DataContext = vm;
         }
-        //private Point firstPoint = new Point();
-        //private void joy_MouseDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    if(e.ChangedButton == MouseButton.Left) { firstPoint = e.GetPosition(this); }
-        //}
-        
-        //private void joy_MouseMove(object sender, System.Windows.Input.MouseEventArgs e)
-        //{
-        //    if (e.LeftButton == MouseButtonState.Pressed)
-        //    {
-        //        //joy.knobPosition.X = e.GetPosition(this).X + joy.knobPosition.X - firstPoint.X;
-        //        //joy.knobPosition.Y = e.GetPosition(this).Y + joy.knobPosition.Y - firstPoint.Y;
-        //        joy.knobPosition.X = e.GetPosition(this).X - firstPoint.X;
-        //        joy.knobPosition.Y = e.GetPosition(this).Y - firstPoint.Y;
-                
-        //    }
-        //}
     }
 }
