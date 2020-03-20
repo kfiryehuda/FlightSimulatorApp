@@ -25,7 +25,8 @@ namespace FlightSimulatorApp
 
         public void write(string command)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
+            Console.WriteLine(command);
         }
     }
 }
