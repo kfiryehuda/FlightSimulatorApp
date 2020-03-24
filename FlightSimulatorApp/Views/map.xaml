@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="FlightSimulatorApp.Views.map"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+ 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightSimulatorApp.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" Width="546.252">
+    <Grid>
+        <m:Map  CredentialsProvider="AiJ41kTcEGJJGy3gET2SKSlv0FdEZBYUTUW_xH_O-be-j2h1hAK9tSRv98v2teYl" Center="37.806029,-122.407007" ZoomLevel="1">
+            <m:MapPolyline  Fill="Blue" Stroke="Green" StrokeThickness="5" 
+                          Locations="47.6424,-122.3219 47.8424,-122.1747 47.5814,-122.1747" 
+                          Opacity="0.7"/>
+        </m:Map>
+    </Grid>
+</UserControl>

@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{19F1F68D-62F5-4FEA-AD45-661E30631CE8}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>FlightSimulatorApp</RootNamespace>
     <AssemblyName>FlightSimulatorApp</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
@@ -53,6 +53,10 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Bing Maps WPF Control\V1\Libraries\Microsoft.Maps.MapControl.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
@@ -75,31 +79,17 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Client.cs" />
-    <Compile Include="Connect.xaml.cs">
-      <DependentUpon>Connect.xaml</DependentUpon>
-    </Compile>
     <Compile Include="IClient.cs" />
     <Compile Include="Models\IFlightGearModel.cs" />
     <Compile Include="Models\FlightGearModel.cs" />
     <Compile Include="ViewModel\FlightGearViewModel.cs" />
     <Compile Include="ViewModel\IFlightGearViewModel.cs" />
-    <Compile Include="Views\DashBoard.xaml.cs">
-      <DependentUpon>DashBoard.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Joistick.xaml.cs">
       <DependentUpon>Joistick.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\controller.xaml.cs">
-      <DependentUpon>controller.xaml</DependentUpon>
+    <Compile Include="Views\mapp.xaml.cs">
+      <DependentUpon>mapp.xaml</DependentUpon>
     </Compile>
-    <Page Include="Connect.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\DashBoard.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Views\Joistick.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,7 +106,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\controller.xaml">
+    <Page Include="Views\mapp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
