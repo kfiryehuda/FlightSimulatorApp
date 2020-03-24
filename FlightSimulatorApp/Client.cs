@@ -17,14 +17,16 @@ namespace FlightSimulatorApp
     class Client : IClient
     {
 
-        TcpClient tcpClient = new TcpClient();
+        TcpClient tcpClient;
         NetworkStream netStream;
         public void connect(string ip, int port)
         {
 
             try
             {
+                tcpClient  = new TcpClient();
                 Console.WriteLine("Connecting.....");
+
                 tcpClient.Connect(ip, port);
                 // use the ipaddress as in the server program
                 Console.WriteLine("Connected");
@@ -78,6 +80,7 @@ namespace FlightSimulatorApp
         {
             if (netStream.CanWrite)
             {
+                command += ' ';
                 Byte[] sendBytes = Encoding.UTF8.GetBytes(command);
                 netStream.Write(sendBytes, 0, sendBytes.Length);
 
