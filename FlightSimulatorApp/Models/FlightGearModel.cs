@@ -17,7 +17,7 @@ namespace FlightSimulatorApp.Models
             this.client = client;
             this.stop = false;
         }
-        private double rudder;
+        private double rudder=0;
         public double Rudder { 
             get { return rudder; } 
             set {
@@ -25,7 +25,7 @@ namespace FlightSimulatorApp.Models
                 client.write("set /controls/flight/rudder " + rudder);
             }
         }
-        private double elevator;
+        private double elevator=0;
         public double Elevator
         {
             get { return elevator; }

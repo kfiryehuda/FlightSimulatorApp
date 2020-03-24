@@ -29,6 +29,7 @@ namespace FlightSimulatorApp
             InitializeComponent();
             vm = new FlightGearViewModel(new FlightGearModel(new Client()));
             DataContext = vm;
+            joy.DataContext = vm;
         }
     }
 }
