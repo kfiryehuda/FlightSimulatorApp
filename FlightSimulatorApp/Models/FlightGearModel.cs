@@ -22,7 +22,8 @@ namespace FlightSimulatorApp.Models
             get { return rudder; } 
             set {
                 rudder = value;
-                //client.write("set /controls/flight/rudder " + rudder);
+                client.write("set /controls/flight/rudder " + rudder + "\n");
+
             }
         }
         private double elevator=0;
@@ -32,8 +33,7 @@ namespace FlightSimulatorApp.Models
             set
             {
                 elevator = value;
-                Console.WriteLine(value);
-                //client.write("set /controls/flight/elevator " + elevator);
+                client.write("set /controls/flight/elevator " + elevator + "\n");
             }
         }
         private double aileron;
@@ -44,7 +44,7 @@ namespace FlightSimulatorApp.Models
             {
                 aileron = value;
                 // TODO nead to change!
-                //client.write("set /controls/flight/aileron " + aileron);
+                client.write("set /controls/flight/aileron " + aileron + "\n");
             }
         }
         private double throttle;
@@ -54,8 +54,9 @@ namespace FlightSimulatorApp.Models
             set
             {
                 throttle = value;
-                Console.WriteLine(value);
-                //client.write("set /controls/engines/current-engine/throttle " + throttle);
+                client.write("set /controls/engines/current-engine/throttle " + throttle + "\n");
+                Console.WriteLine("throttle" + value);
+                //Console.WriteLine("read" + client.read()) ;
             }
         }
 
