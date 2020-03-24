@@ -27,7 +27,9 @@ namespace FlightSimulatorApp
         public MainWindow()
         {
             InitializeComponent();
-            vm = new FlightGearViewModel(new FlightGearModel(new Client()));
+            Client kfir = new Client();
+            kfir.connect("10.100.102.8", 5402);
+            vm = new FlightGearViewModel(new FlightGearModel(kfir));
             DataContext = vm;
             joy.DataContext = vm;
         }
