@@ -14,7 +14,7 @@ using System.IO;
 namespace FlightSimulatorApp
 {
 
-    class Client : IClient
+    public class Client : IClient
     {
 
         TcpClient tcpClient;
