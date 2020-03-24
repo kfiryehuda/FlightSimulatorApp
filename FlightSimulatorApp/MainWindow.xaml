@@ -7,12 +7,11 @@
         mc:Ignorable="d"
         xmlns:Controls="clr-namespace:FlightSimulatorApp.Views"
         Title="MainWindow" Height="590.25" Width="800">
+
     <Grid Margin="414,0,-5,0.5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="179" />
             <ColumnDefinition Width="53"/>
-            <ColumnDefinition Width="35"/>
-            <ColumnDefinition Width="74.5"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
@@ -23,9 +22,10 @@
         </Grid.RowDefinitions>
 
         <Label Margin="86,3,9.5,0.5" Grid.Row="0" Grid.ColumnSpan="4" >Aileron:</Label>
-        <Slider Maximum="1" Minimum="-1" TickFrequency="1" Value="{Binding VM_Aileron}" Width="Auto" Margin="0,50,-42.5,0" Grid.RowSpan="2" Grid.ColumnSpan="4" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+        <Slider Grid.Row="1"  Maximum="1" Minimum="-1" TickFrequency="0.1" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Name="slValue" />
         <Label Grid.Row="2" Margin="85,4,10.5,7.5" Grid.ColumnSpan="4" >Throttle:</Label>
-        <Slider Maximum="1" Minimum="-1" TickFrequency="1" Value="{Binding VM_Throttle}" Margin="0,10.5,-42.5,0" Grid.Row="3" Grid.ColumnSpan="4" />
-        <Controls:joistick Grid.Row="4" Margin="8,0,-11.5,0.5" Grid.ColumnSpan="4"/>
+        <Slider Maximum="1" Minimum="-1" TickFrequency="1" Value="{Binding VM_Throttle, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}" Margin="0,10.5,-42.5,0" Grid.Row="3" Grid.ColumnSpan="4" />
+        <Controls:joistick x:Name="joy" Grid.Row="4" Margin="8,0,-11.5,0.5" Grid.ColumnSpan="4"/>
     </Grid>
 </Window>
