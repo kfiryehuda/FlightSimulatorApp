@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Device.Location;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.ViewModel
@@ -156,6 +157,7 @@ namespace FlightSimulatorApp.ViewModel
         }
 
 
+  
 
 
     }

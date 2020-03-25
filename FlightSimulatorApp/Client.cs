@@ -17,11 +17,14 @@ namespace FlightSimulatorApp
     public class Client : IClient
     {
 
+
+        Object obj = new object();
         TcpClient tcpClient;
         NetworkStream netStream;
         Boolean conected = false;
         public Boolean connect(string ip, int port)
         {
+
 
             try
             {
@@ -60,25 +63,31 @@ namespace FlightSimulatorApp
             }
         }
 
-        public string read()
+        public string writeAndRead(string command)
         {
            if (!conected)
             {
                 return "";
             }
-           if (netStream.CanRead)
+           if (netStream.CanRead && netStream.CanWrite)
             {
-                // Reads NetworkStream into a byte buffer.
-                byte[] bytes = new byte[tcpClient.ReceiveBufferSize];
+                lock (obj)
+                {
 
-                // Read can return anything from 0 to numBytesToRead. 
-                // This method blocks until at least one byte is read.
-                netStream.Read(bytes, 0, (int)tcpClient.ReceiveBufferSize);
+                    Byte[] sendBytes = Encoding.ASCII.GetBytes(command);
+                    netStream.Write(sendBytes, 0, sendBytes.Length);
+                    // Reads NetworkStream into a byte buffer.
+                    byte[] bytes = new byte[tcpClient.ReceiveBufferSize];
 
-                // Returns the data received from the host to the console.
-                string returndata = Encoding.ASCII.GetString(bytes);
+                    // Read can return anything from 0 to numBytesToRead. 
+                    // This method blocks until at least one byte is read.
+                    netStream.Read(bytes, 0, (int)tcpClient.ReceiveBufferSize);
 
-                return returndata;
+                    // Returns the data received from the host to the console.
+                    string returndata = Encoding.ASCII.GetString(bytes);
+
+                    return returndata;
+                }
             }
             else
             {
@@ -91,30 +100,5 @@ namespace FlightSimulatorApp
             }
         }
 
-        public void write(string command)
-        {
-            if (!conected)
-            {
-                return;
-            }
-            if (netStream.CanWrite)
-            {
-
-                Byte[] sendBytes = Encoding.ASCII.GetBytes(command);
-                netStream.Write(sendBytes, 0, sendBytes.Length);
-
-            }
-            else
-            {
-                Console.WriteLine("You cannot write data to this stream.");
-                tcpClient.Close();
-
-                // Closing the tcpClient instance does not close the network stream.
-                netStream.Close();
-                return;
-            }
-
-
-        }
     }
 }

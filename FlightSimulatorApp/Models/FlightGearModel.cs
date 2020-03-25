@@ -11,6 +11,8 @@ namespace FlightSimulatorApp.Models
 {
     public class FlightGearModel : IFlightGearModel
     {
+
+
         private IClient client;
         volatile Boolean stop;
         public FlightGearModel(IClient client)
@@ -22,11 +24,12 @@ namespace FlightSimulatorApp.Models
         public double Rudder { 
             get { return rudder; } 
             set {
+               
                 rudder = value;
-                client.write("set /controls/flight/rudder " + rudder + "\n");
-                client.read();
-                this.NotifyPropertyChanged("Rudder");
 
+                client.writeAndRead("set /controls/flight/rudder " + rudder + "\n");
+                this.NotifyPropertyChanged("Rudder");
+                
             }
         }
         private double elevator;
@@ -35,10 +38,12 @@ namespace FlightSimulatorApp.Models
             get { return elevator; }
             set
             {
+                
                 elevator = value;
-                client.write("set /controls/flight/elevator " + elevator + "\n");
-                client.read();
+
+                client.writeAndRead("set /controls/flight/elevator " + elevator + "\n");
                 this.NotifyPropertyChanged("Elevator");
+                
             }
         }
         private double aileron;
@@ -47,11 +52,13 @@ namespace FlightSimulatorApp.Models
             get { return aileron; }
             set
             {
+                
                 aileron = value;
                 // TODO nead to change!
-                client.write("set /controls/flight/aileron " + aileron + "\n");
-                client.read();
+
+                client.writeAndRead("set /controls/flight/aileron " + aileron + "\n");
                 this.NotifyPropertyChanged("Aileron");
+                
             }
         }
         private double throttle;
@@ -60,11 +67,12 @@ namespace FlightSimulatorApp.Models
             get { return throttle; }
             set
             {
+                
                 throttle = value;
 
-                client.write("set /controls/engines/current-engine/throttle " + throttle + "\n");
-                client.read();
+                client.writeAndRead("set /controls/engines/current-engine/throttle " + throttle + "\n");
                 this.NotifyPropertyChanged("Throttle");
+                
                 //Console.WriteLine("read" + client.read()) ;
             }
         }
@@ -221,6 +229,7 @@ namespace FlightSimulatorApp.Models
         }
 
 
+
         public void start(string ip, int port)
         {
            
@@ -231,41 +240,34 @@ namespace FlightSimulatorApp.Models
             stop = false;
             new Thread(delegate ()
             {
+
                 while (!stop)
                 {
                     
-                    client.write("get /position/latitude-deg\n");
-                    this.Latitude = Convert.ToDouble(client.read()) ;
+                        this.Latitude = Convert.ToDouble(client.writeAndRead("get /position/latitude-deg\n"));
 
-                    client.write("get /position/longitude-deg\n");
-                    this.Longitude = Convert.ToDouble(client.read());
+                        this.Longitude = Convert.ToDouble(client.writeAndRead("get /position/longitude-deg\n"));
 
-                    client.write("get /instrumentation/airspeed-indicator/indicated-speed-kt\n");
-                    this.Air_speed = Convert.ToDouble(client.read());
+                        this.Air_speed = Convert.ToDouble(client.writeAndRead("get /instrumentation/airspeed-indicator/indicated-speed-kt\n"));
 
-                    client.write("get /instrumentation/gps/indicated-altitude-ft\n");
-                    this.Altitude = Convert.ToDouble(client.read());
+                        this.Altitude = Convert.ToDouble(client.writeAndRead("get /instrumentation/gps/indicated-altitude-ft\n"));
 
-                    client.write("get /instrumentation/attitude-indicator/internal-roll-deg\n");
-                    this.Roll = Convert.ToDouble(client.read());
+                        this.Roll = Convert.ToDouble(client.writeAndRead("get /instrumentation/attitude-indicator/internal-roll-deg\n"));
 
-                    client.write("get /instrumentation/attitude-indicator/internal-pitch-deg\n");
-                    this.Pitch = Convert.ToDouble(client.read());
+                        this.Pitch = Convert.ToDouble(client.writeAndRead("get /instrumentation/attitude-indicator/internal-pitch-deg\n"));
 
-                    client.write("get /instrumentation/altimeter/indicated-altitude-ft\n");
-                    this.Altimeter = Convert.ToDouble(client.read());
+                        this.Altimeter = Convert.ToDouble(client.writeAndRead("get /instrumentation/altimeter/indicated-altitude-ft\n"));
 
-                    client.write("get /instrumentation/heading-indicator/indicated-heading-deg\n");
-                    this.Heading = Convert.ToDouble(client.read());
+                        this.Heading = Convert.ToDouble(client.writeAndRead("get /instrumentation/heading-indicator/indicated-heading-deg\n"));
 
-                    client.write("get /instrumentation/gps/indicated-ground-speed-kt\n");
-                    this.Ground_speed = Convert.ToDouble(client.read());
+                        this.Ground_speed = Convert.ToDouble(client.writeAndRead("get /instrumentation/gps/indicated-ground-speed-kt\n"));
 
-                    client.write("get /instrumentation/gps/indicated-vertical-speed\n");
-                    this.Vertical_speed = Convert.ToDouble(client.read());
+                        this.Vertical_speed = Convert.ToDouble(client.writeAndRead("get /instrumentation/gps/indicated-vertical-speed\n"));
 
-                    this.Location_str = Convert.ToString(latitude + "," + longitude);
-                    Thread.Sleep(250);
+                        this.Location_str = Convert.ToString(latitude + "," + longitude);
+                        Thread.Sleep(250);
+                  
+
                 }
             }).Start();
         }

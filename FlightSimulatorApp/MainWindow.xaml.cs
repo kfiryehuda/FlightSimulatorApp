@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using System.Windows.Forms;
 using FlightSimulatorApp.Models;
 using FlightSimulatorApp.ViewModel;
+using System.Threading;
 
 namespace FlightSimulatorApp
 {
@@ -25,8 +26,10 @@ namespace FlightSimulatorApp
     {
         private IFlightGearViewModel vm;
         private Client client;
+
         public MainWindow()
         {
+           
             InitializeComponent();
             client = new Client();
             //client.connect(ip, port);
@@ -35,6 +38,10 @@ namespace FlightSimulatorApp
 
             map.DataContext = vm;
             disconnectButton.IsEnabled = false;
+
+           
+
+
 
         }
 
@@ -55,5 +62,14 @@ namespace FlightSimulatorApp
             vm.Stop();
             connectButton.IsEnabled = true;
         }
+
+        private void map_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        //Method to implement syncronization using Mutex  
+
+
     }
 }

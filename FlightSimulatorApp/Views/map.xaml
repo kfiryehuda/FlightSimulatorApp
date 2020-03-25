@@ -10,7 +10,7 @@
              d:DesignHeight="450" Width="546.252">
     <Grid>
 
-        <m:Map x:Name="myMap" CredentialsProvider="AiJ41kTcEGJJGy3gET2SKSlv0FdEZBYUTUW_xH_O-be-j2h1hAK9tSRv98v2teYl" Center="37.806029,-122.407007" ZoomLevel="1">
+        <m:Map x:Name="myMap" CredentialsProvider="AiJ41kTcEGJJGy3gET2SKSlv0FdEZBYUTUW_xH_O-be-j2h1hAK9tSRv98v2teYl" Center="32.002644,34.888781" ZoomLevel="1">
             
 
 

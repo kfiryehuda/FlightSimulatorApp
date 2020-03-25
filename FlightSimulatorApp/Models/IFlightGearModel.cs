@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Device.Location;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.Models
@@ -34,6 +35,9 @@ namespace FlightSimulatorApp.Models
         double Vertical_speed { get; set; }
         String Location_str { set; get; }
 
+
+
+        
     }
 }
 
