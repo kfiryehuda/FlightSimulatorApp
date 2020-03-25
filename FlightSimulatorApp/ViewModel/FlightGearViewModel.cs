@@ -39,13 +39,13 @@ namespace FlightSimulatorApp.ViewModel
         public double VM_Rudder
         {
             get { return Convert.ToDouble(Convert.ToInt32(rudder * 100))/100; }
-            set { rudder = value; model.Rudder = value; }
+            set { rudder = value / 170; model.Rudder = value/170; }
             
         }
         public double VM_Elevator
         {
             get { return Convert.ToDouble(Convert.ToInt32(elevator * 100)) / 100; }
-            set { elevator = value; model.Elevator = value; }
+            set { elevator = value / 170; model.Elevator = value / 170; }
             
         }
         public double VM_Aileron
