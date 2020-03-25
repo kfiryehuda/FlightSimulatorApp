@@ -80,7 +80,7 @@
                 </TransformGroup>
             </Controls:controller.RenderTransform>
         </Controls:controller>
-        <Controls:map x:Name="map" Margin="-398,38,31,36" Grid.Row="4" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3"  >
+        <Controls:map x:Name="map" Margin="-395,7,28.5,128" Grid.Row="5" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2"  >
             <Controls:map.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

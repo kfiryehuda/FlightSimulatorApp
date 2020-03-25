@@ -5,26 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightSimulatorApp.Views"
              xmlns:Controls="clr-namespace:FlightSimulatorApp.Views"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" d:DesignWidth="800" Height="494.667">
     <Viewbox>
-        
-        
-    <Grid>
-        <Controls:joistick x:Name="joy" Margin="0,-2,0,-24"/>
+
+
+        <Grid>
+            <Controls:joistick x:Name="joy" Margin="0,-27,0,-24"/>
             <Slider x:Name="aileSlider" Value="{Binding VM_Aileron, UpdateSourceTrigger=PropertyChanged,Mode=OneWayToSource}"  Maximum="1" Minimum="-1" TickFrequency="0.01" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Margin="244,-10,0,426" HorizontalAlignment="Left" Width="336"  />
             <Slider x:Name="throSlider" Value="{Binding VM_Throttle, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"  Maximum="1" Minimum="-1" TickFrequency="0.01" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Margin="17,233,0,183" HorizontalAlignment="Left" Width="334" RenderTransformOrigin="0.5,0.5"  >
-            <Slider.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-89.596"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Slider.RenderTransform>
-        </Slider>
-        <TextBlock HorizontalAlignment="Left" Margin="391,16,0,0" TextWrapping="Wrap" Text="Aileron" VerticalAlignment="Top"/>
-        <TextBlock HorizontalAlignment="Left" Margin="104,230,0,0" TextWrapping="Wrap" Text="Trottle" VerticalAlignment="Top"/>
+                <Slider.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-89.596"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Slider.RenderTransform>
+            </Slider>
+            <TextBlock HorizontalAlignment="Left" Margin="391,16,0,0" TextWrapping="Wrap" Text="Aileron" VerticalAlignment="Top"/>
+            <TextBlock HorizontalAlignment="Left" Margin="104,230,0,0" TextWrapping="Wrap" Text="Trottle" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Margin="390,427,0,-3" TextWrapping="Wrap" Text="Rudder" VerticalAlignment="Top"/>
             <TextBlock HorizontalAlignment="Left" Margin="603,214,0,0" TextWrapping="Wrap" Text="Elevator" VerticalAlignment="Top"/>
 

@@ -11,9 +11,9 @@ namespace FlightSimulatorApp.ViewModel
 {
     public class FlightGearViewModel : IFlightGearViewModel
     {
-        private IFlightGearModel model;
+        private FlightGearModel model;
         public event PropertyChangedEventHandler PropertyChanged;
-        public FlightGearViewModel(IFlightGearModel model)
+        public FlightGearViewModel(FlightGearModel model)
         {
             this.model = model;
             model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
@@ -63,7 +63,8 @@ namespace FlightSimulatorApp.ViewModel
 
         public double VM_Longitude
         {
-            get { return model.Longitude; }
+            get { 
+                return model.Longitude; }
             
         }
 
@@ -78,10 +79,9 @@ namespace FlightSimulatorApp.ViewModel
             get { return new GeoCoordinate(VM_Latitude, VM_Longitude); }
 
         }
-        String location_str;
-        public String Location_str
+        public String VM_Location_str
         {
-            get { return Convert.ToString(VM_Latitude) + "," +Convert.ToString(VM_Longitude); }
+            get { return model.Location_str;}
 
         }
         

@@ -102,6 +102,20 @@ namespace FlightSimulatorApp.Models
             set { location = value;
                 this.NotifyPropertyChanged("Location");}
         }
+        private String location_str;
+        public String Location_str
+        {
+            
+            get
+            {
+                return location_str;
+            }
+            set
+            {
+                location_str = value;
+                this.NotifyPropertyChanged("Location_str");
+            }
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propName)
@@ -139,6 +153,7 @@ namespace FlightSimulatorApp.Models
                     //receve all property neaded from the client
                     //Console.WriteLine(client.read());
                     this.Longitude = Convert.ToDouble(client.read());
+                    this.Location_str = Convert.ToString(latitude + "," + longitude);
                     Thread.Sleep(250);
                 }
             }).Start();
