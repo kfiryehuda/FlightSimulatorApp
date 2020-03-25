@@ -24,5 +24,18 @@ namespace FlightSimulatorApp.Models
         double Latitude { set; get; }
         double Longitude { set; get; }
         GeoCoordinate Location { get; set; }
+        double Air_speed { get; set; }
+        double Altitude { get; set; }
+        double Roll { get; set; }
+        double Pitch { get; set; }
+        double Altimeter { get; set; }
+        double Heading { get; set; }
+        double Ground_speed { get; set; }
+        double Vertical_speed { get; set; }
+        string Location_str { set; get; }
+
     }
 }
+
+
+

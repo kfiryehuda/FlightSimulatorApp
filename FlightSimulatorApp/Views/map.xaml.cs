@@ -25,10 +25,20 @@ namespace FlightSimulatorApp.Views
 
         public map()
         {
-            InitializeComponent();
-           
+            Boolean stop = false;
+/*            InitializeComponent();
+            new Thread(delegate ()
+            {
+                while (!stop)
+                {
+                    StrL.Content = latitudeLbl.Content + "," + longitudeLbl.Content;
+                    Thread.Sleep(250);
 
+                }
+            }).Start();
+*/
         }
-     
+
+
     }
 }
