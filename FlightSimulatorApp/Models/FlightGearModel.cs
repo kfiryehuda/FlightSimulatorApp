@@ -16,7 +16,7 @@ namespace FlightSimulatorApp.Models
         public FlightGearModel(IClient client)
         {
             this.client = client;
-            this.stop = false;
+
         }
         private double rudder;
         public double Rudder { 
@@ -212,19 +212,23 @@ namespace FlightSimulatorApp.Models
                 //Console.WriteLine("read" + client.read()) ;
             }
         }
-        public void connect(string ip, int port)
-        {
-            client.connect(ip, port);
-        }
+
 
         public void disconnect()
         {
+            stop = true;
             client.disconnect();
         }
-        
 
-        public void start()
+
+        public void start(string ip, int port)
         {
+           
+            if(!client.connect(ip, port)){
+                return;
+            }
+           
+            stop = false;
             new Thread(delegate ()
             {
                 while (!stop)

@@ -20,7 +20,7 @@ namespace FlightSimulatorApp
         TcpClient tcpClient;
         NetworkStream netStream;
         Boolean conected = false;
-        public void connect(string ip, int port)
+        public Boolean connect(string ip, int port)
         {
 
             try
@@ -35,18 +35,29 @@ namespace FlightSimulatorApp
                 String str = Console.ReadLine();
                 netStream = tcpClient.GetStream();
                 conected = true;
+                return true;
             }
 
             catch (Exception e)
             {
+                
                 Console.WriteLine("Error..... " + e.StackTrace);
+                return false;
             }
         }
 
         public void disconnect()
         {
-            netStream.Close();
-            tcpClient.Close();
+            if (conected)
+            {
+                netStream.Close();
+                tcpClient.Close();
+            }
+            else 
+            {
+                Console.WriteLine("Not connected ");
+                return;
+            }
         }
 
         public string read()

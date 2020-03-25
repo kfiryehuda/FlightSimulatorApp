@@ -8,7 +8,7 @@ namespace FlightSimulatorApp
 {
     public interface IClient
     {
-        void connect(string ip, int port);
+        Boolean connect(string ip, int port);
         void write(string command);
         string read(); // blocking call
         void disconnect();

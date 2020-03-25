@@ -31,10 +31,17 @@ namespace FlightSimulatorApp.ViewModel
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
 
-        public void Start()
+        public void Start(string ip, int port)
         {
-            model.start();
+ 
+            model.start(ip, port);
         }
+
+        public void Stop()
+        {
+            model.disconnect();
+        }
+
         private double rudder, elevator, aileron, throttle;
         public double VM_Rudder
         {

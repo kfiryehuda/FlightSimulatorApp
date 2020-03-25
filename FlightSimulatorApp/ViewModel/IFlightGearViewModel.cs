@@ -9,7 +9,8 @@ namespace FlightSimulatorApp.ViewModel
 {
     public interface IFlightGearViewModel : INotifyPropertyChanged
     {
-        void Start();
+        void Start(string ip, int port);
+        void Stop();
 
     }
 

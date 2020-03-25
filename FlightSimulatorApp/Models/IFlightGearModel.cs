@@ -10,9 +10,9 @@ namespace FlightSimulatorApp.Models
 {
     public interface IFlightGearModel : INotifyPropertyChanged
     {
-        void connect(string ip, int port);
+
         void disconnect();
-        void start();
+        void start(string ip, int port);
 
         // TODO add map property
 

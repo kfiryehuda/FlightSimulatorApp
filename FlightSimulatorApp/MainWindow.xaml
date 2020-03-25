@@ -57,7 +57,8 @@
 
     <Grid Margin="414,0,-5,0.5">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="179" />
+            <ColumnDefinition Width="89" />
+            <ColumnDefinition Width="91"/>
             <ColumnDefinition Width="53"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -65,12 +66,14 @@
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
             <RowDefinition Height="50" />
-            <RowDefinition Height="50" />
-            <RowDefinition Height="69*"/>
-            <RowDefinition Height="193*"/>
+            <RowDefinition Height="67" />
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="191*"/>
         </Grid.RowDefinitions>
         <Button Name="connectButton" Content="Connect" HorizontalAlignment="Left" Margin="-357,30,0,0" Width="74" Click="Button_Click"/>
-        <Controls:controller x:Name="controller" Margin="133,8,-568,65" Grid.Row="4" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3" Grid.ColumnSpan="2"  >
+        <Controls:controller x:Name="controller" Margin="85,26,-488,8" Grid.Row="4" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="5" Grid.ColumnSpan="3"  >
             <Controls:controller.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -80,7 +83,7 @@
                 </TransformGroup>
             </Controls:controller.RenderTransform>
         </Controls:controller>
-        <Controls:map x:Name="map" Margin="-395,7,28.5,128" Grid.Row="5" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2"  >
+        <Controls:map x:Name="map" Margin="-381,6,15,67" Grid.Row="8" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2"  >
             <Controls:map.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -90,7 +93,7 @@
                 </TransformGroup>
             </Controls:map.RenderTransform>
         </Controls:map>
-        <Controls:DashBoard Height="261" Width="324" Grid.Column="1" Margin="173.5,5,-444,121" Grid.RowSpan="6" />
+        <Controls:DashBoard Margin="42,-7,-484,0" Grid.RowSpan="5" Grid.Column="2" />
         <Button Name="disconnectButton" Content="Disconnect" HorizontalAlignment="Left" Margin="-255,30,0,0" Width="75" Height="20" VerticalAlignment="Top" Click="Button_Click_1"/>
     </Grid>
 </Window>

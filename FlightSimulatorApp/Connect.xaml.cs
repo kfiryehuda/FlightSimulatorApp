@@ -31,10 +31,11 @@ namespace FlightSimulatorApp
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine(port.Text);
-            client.connect(ip.Text, Convert.ToInt32(port.Text));
+
+            vm.Start(ip.Text, Convert.ToInt32(port.Text));
             this.Hide();
-            vm.Start();
-            
+
+
         }
     }
 }

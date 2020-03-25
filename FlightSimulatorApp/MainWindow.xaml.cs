@@ -50,8 +50,9 @@ namespace FlightSimulatorApp
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+
             disconnectButton.IsEnabled = false;
-            client.disconnect();
+            vm.Stop();
             connectButton.IsEnabled = true;
         }
     }
