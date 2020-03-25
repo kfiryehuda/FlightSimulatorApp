@@ -2,13 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Device.Location;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.ViewModel
 {
-    class FlightGearViewModel : IFlightGearViewModel
+    public class FlightGearViewModel : IFlightGearViewModel
     {
         private IFlightGearModel model;
         public event PropertyChangedEventHandler PropertyChanged;
@@ -18,7 +19,10 @@ namespace FlightSimulatorApp.ViewModel
             model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
              {
                  NotifyPropertyChanged("VM_" + e.PropertyName);
+                 
              };
+            
+            
         }
 
         public void NotifyPropertyChanged(string propName)
@@ -26,26 +30,58 @@ namespace FlightSimulatorApp.ViewModel
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
-        private double rudder, elevator, aileron, throttle;
+
+        public void Start()
+        {
+            model.start();
+        }
+
         public double VM_Rudder
         {
-            get { return rudder; }
-            set { model.Rudder = value; }
+            get { return model.Rudder; }
+            
         }
         public double VM_Elevator
         {
-            get { return elevator; }
-            set { model.Elevator = value; }
+            get { return model.Elevator; }
+            
         }
         public double VM_Aileron
         {
-            get { return aileron; }
-            set { model.Aileron = value; }
+            get { return model.Aileron; }
+            
         }
         public double VM_Throttle
         {
-            get { return throttle; }
-            set { model.Throttle = value; }
+            get { return model.Throttle; }
+            
         }
+
+        public double VM_Longitude
+        {
+            get { return model.Longitude; }
+            
+        }
+
+        public double VM_Latitude
+        {
+            get { return model.Latitude; }
+
+        }
+
+        public GeoCoordinate VM_Location
+        {
+            get { return new GeoCoordinate(VM_Latitude, VM_Longitude); }
+
+        }
+        String location_str;
+        public String Location_str
+        {
+            get { return Convert.ToString(VM_Latitude) + "," +Convert.ToString(VM_Longitude); }
+
+        }
+        
+            
+
     }
 }

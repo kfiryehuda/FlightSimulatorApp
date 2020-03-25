@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.ViewModel
 {
-    interface IFlightGearViewModel : INotifyPropertyChanged
+    public interface IFlightGearViewModel : INotifyPropertyChanged
     {
+        void Start();
 
     }
 }

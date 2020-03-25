@@ -19,6 +19,7 @@ namespace FlightSimulatorApp
 
         TcpClient tcpClient;
         NetworkStream netStream;
+        Boolean conected = false;
         public void connect(string ip, int port)
         {
 
@@ -33,7 +34,7 @@ namespace FlightSimulatorApp
 
                 String str = Console.ReadLine();
                 netStream = tcpClient.GetStream();
-
+                conected = true;
             }
 
             catch (Exception e)
@@ -50,6 +51,10 @@ namespace FlightSimulatorApp
 
         public string read()
         {
+           if (!conected)
+            {
+                return "";
+            }
            if (netStream.CanRead)
             {
                 // Reads NetworkStream into a byte buffer.
@@ -60,9 +65,8 @@ namespace FlightSimulatorApp
                 netStream.Read(bytes, 0, (int)tcpClient.ReceiveBufferSize);
 
                 // Returns the data received from the host to the console.
-                string returndata = Encoding.UTF8.GetString(bytes);
+                string returndata = Encoding.ASCII.GetString(bytes);
 
-                Console.WriteLine("This is what the host returned to you: " + returndata);
                 return returndata;
             }
             else
@@ -78,10 +82,14 @@ namespace FlightSimulatorApp
 
         public void write(string command)
         {
+            if (!conected)
+            {
+                return;
+            }
             if (netStream.CanWrite)
             {
-                command += ' ';
-                Byte[] sendBytes = Encoding.UTF8.GetBytes(command);
+
+                Byte[] sendBytes = Encoding.ASCII.GetBytes(command);
                 netStream.Write(sendBytes, 0, sendBytes.Length);
 
             }

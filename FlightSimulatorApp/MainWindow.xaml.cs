@@ -23,7 +23,7 @@ namespace FlightSimulatorApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private FlightGearViewModel vm;
+        private IFlightGearViewModel vm;
         private Client client;
         public MainWindow()
         {
@@ -34,6 +34,7 @@ namespace FlightSimulatorApp
             DataContext = vm;
             controller.DataContext = vm;
             controller.joy.DataContext = vm;
+            map.DataContext = vm;
             disconnectButton.IsEnabled = false;
         }
 
@@ -42,6 +43,7 @@ namespace FlightSimulatorApp
             connectButton.IsEnabled = false;
             Connect connect = new Connect();
             connect.client = client;
+            connect.vm = vm;
             connect.Show();
             disconnectButton.IsEnabled = true;
         }

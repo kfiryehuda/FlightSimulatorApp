@@ -23,7 +23,7 @@
             <RowDefinition Height="193*"/>
         </Grid.RowDefinitions>
         <Button Name="connectButton" Content="Connect" HorizontalAlignment="Left" Margin="-357,30,0,0" Width="74" Click="Button_Click"/>
-        <Controls:controller x:Name="controller" Margin="7,46,-442,27" Grid.Row="4" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3" Grid.ColumnSpan="2"  >
+        <Controls:controller x:Name="controller" Margin="133,8,-568,65" Grid.Row="4" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3" Grid.ColumnSpan="2"  >
             <Controls:controller.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -33,6 +33,16 @@
                 </TransformGroup>
             </Controls:controller.RenderTransform>
         </Controls:controller>
+        <Controls:map x:Name="map" Margin="-398,38,31,36" Grid.Row="4" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="3"  >
+            <Controls:map.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.096"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Controls:map.RenderTransform>
+        </Controls:map>
         <Button Name="disconnectButton" Content="Disconnect" HorizontalAlignment="Left" Margin="-255,30,0,0" Width="75" Height="20" VerticalAlignment="Top" Click="Button_Click_1"/>
     </Grid>
 </Window>
