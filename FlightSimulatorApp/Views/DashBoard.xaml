@@ -6,26 +6,102 @@
              xmlns:local="clr-namespace:FlightSimulatorApp.Views"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="450">
-    
-        <Grid ShowGridLines="True">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-            <TextBlock Text="Row0 Column0" Grid.Row="0" Grid.Column="0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Text="Row0 Column1" Grid.Row="0" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Text="Row0 Column2" Grid.Row="0" Grid.Column="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Text="Row1 Column0" Grid.Row="1" Grid.Column="0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Text="Row1 Column1" Grid.Row="1" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Text="Row1 Column2" Grid.Row="1" Grid.Column="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Text="Row2 Column0" Grid.Row="2" Grid.Column="0" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Text="Row2 Column1" Grid.Row="2" Grid.Column="1" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Text="Row2 Column2" Grid.Row="2" Grid.Column="2" FontSize="16" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
-        </Grid>
+
+    <FlowDocumentScrollViewer>
+        <FlowDocument>
+            <Paragraph FontSize="18pt">Dash Bord</Paragraph>
+            <Table>
+                <TableRowGroup Paragraph.TextAlignment="left">
+                    <TableRow FontWeight="Bold" >
+                        <TableCell>
+                            <Paragraph>Name</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>Value</Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Air Speed</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Altitude</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Roll</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Pitch</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Altimeter</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Heading Degree</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Ground Speed</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Vertical Speed</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                </TableRowGroup>
+            </Table>
+        </FlowDocument>
+    </FlowDocumentScrollViewer>
 </UserControl>

@@ -6,9 +6,60 @@
         xmlns:local="clr-namespace:FlightSimulatorApp"
         mc:Ignorable="d"
         xmlns:Controls="clr-namespace:FlightSimulatorApp.Views"
-        Title="MainWindow" Height="664.75" Width="1092">
+        Title="MainWindow" Height="800" Width="1200">
+    <FlowDocumentScrollViewer>
+        <FlowDocument>
+            <Paragraph FontSize="18pt">Flight Gear Control App</Paragraph>
+            <Table>
+                <TableRowGroup>
+                    <TableRow FontWeight="Bold" >
+                        <TableCell>
+                            <Paragraph>
+                                <Button Name="connectButton" Content="Connect" Width="74" Click="Button_Click"/>
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>Value</Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>
+                                <Button Name="disconnectButton" Content="Disconnect"  Width="100" Height="20"  Click="Button_Click_1"/>
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Controls:DashBoard Height="261" Width="324" />
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Altitude</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                
+                            </Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Controls:controller x:Name="controller" Height="285" Width="458" />
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                </TableRowGroup>
+            </Table>
+        </FlowDocument>
+    </FlowDocumentScrollViewer>
 
-    <Grid Margin="414,0,-5,0.5">
+    <!--Grid Margin="414,0,-5,0.5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="179" />
             <ColumnDefinition Width="53"/>
@@ -34,5 +85,5 @@
             </Controls:controller.RenderTransform>
         </Controls:controller>
         <Button Name="disconnectButton" Content="Disconnect" HorizontalAlignment="Left" Margin="-255,30,0,0" Width="75" Height="20" VerticalAlignment="Top" Click="Button_Click_1"/>
-    </Grid>
+    </Grid-->
 </Window>

@@ -30,22 +30,22 @@ namespace FlightSimulatorApp.ViewModel
         public double VM_Rudder
         {
             get { return rudder; }
-            set { model.Rudder = value; }
+            set { rudder = value; model.Rudder = value; }
         }
         public double VM_Elevator
         {
             get { return elevator; }
-            set { model.Elevator = value; }
+            set { elevator = value; model.Elevator = value; }
         }
         public double VM_Aileron
         {
             get { return aileron; }
-            set { model.Aileron = value; }
+            set { aileron = value; model.Aileron = value; }
         }
         public double VM_Throttle
         {
             get { return throttle; }
-            set { model.Throttle = value; }
+            set { throttle = value; model.Throttle = value; }
         }
     }
 }
