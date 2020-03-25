@@ -10,7 +10,20 @@
              d:DesignHeight="450" Width="546.252">
     <Grid>
 
-        <m:Map x:Name="myMap" CredentialsProvider="AiJ41kTcEGJJGy3gET2SKSlv0FdEZBYUTUW_xH_O-be-j2h1hAK9tSRv98v2teYl" Center="37.806029,-122.407007" ZoomLevel="1">            <Label  Name="latitudeLbl"  Content="{Binding Path=VM_Latitude, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Height="106" VerticalAlignment="Top" Width="127" Margin="73,334,0,0"/>            <Label  Name="longitudeLbl" Content="{Binding Path=VM_Location_str, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}"  HorizontalAlignment="Left" Height="106" VerticalAlignment="Top" Width="127" Margin="291,334,0,0"/>            <Label  Name="StrL" Content="{Binding Path=VM_Longitude, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}"  HorizontalAlignment="Left" Height="106" VerticalAlignment="Top" Width="127" Margin="200,244,0,0"/>            <m:Pushpin x:Name ="pin" Location="{Binding Path=VM_Location_str,UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>        </m:Map>
+        <m:Map x:Name="myMap" CredentialsProvider="AiJ41kTcEGJJGy3gET2SKSlv0FdEZBYUTUW_xH_O-be-j2h1hAK9tSRv98v2teYl" Center="37.806029,-122.407007" ZoomLevel="1">
+            
+
+
+            <Canvas x:Name="imageCanvas"  Width="30" Height="30"   m:MapLayer.Position="{Binding Path=VM_Location_str,UpdateSourceTrigger=PropertyChanged}" 
+                    RenderOptions.BitmapScalingMode="NearestNeighbor"
+                    RenderOptions.EdgeMode="Aliased" >
+                <Canvas.Background>
+                    <ImageBrush x:Name="image1"
+                               ImageSource="airplane.png">
+                    </ImageBrush>
+                </Canvas.Background>
+            </Canvas>
+        </m:Map>
 
 
     </Grid>

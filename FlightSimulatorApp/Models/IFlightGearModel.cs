@@ -32,7 +32,7 @@ namespace FlightSimulatorApp.Models
         double Heading { get; set; }
         double Ground_speed { get; set; }
         double Vertical_speed { get; set; }
-        string Location_str { set; get; }
+        String Location_str { set; get; }
 
     }
 }

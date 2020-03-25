@@ -199,8 +199,8 @@ namespace FlightSimulatorApp.Models
             }
         }
         
-        private string location_str;
-        public string Location_str
+        private String location_str;
+        public String Location_str
         {
             get { return location_str; }
             set
@@ -260,7 +260,7 @@ namespace FlightSimulatorApp.Models
                     client.write("get /instrumentation/gps/indicated-vertical-speed\n");
                     this.Vertical_speed = Convert.ToDouble(client.read());
 
-                    this.Location_str = Convert.ToString(Latitude + "," + Longitude);
+                    this.Location_str = Convert.ToString(latitude + "," + longitude);
                     Thread.Sleep(250);
                 }
             }).Start();

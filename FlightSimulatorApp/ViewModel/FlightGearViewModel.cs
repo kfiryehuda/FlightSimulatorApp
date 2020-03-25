@@ -86,11 +86,11 @@ namespace FlightSimulatorApp.ViewModel
 
         }
 
-        private string location_str;
-        public string VM_Location_str
+
+        public String VM_Location_str
         {
 
-            get { return location_str; }
+            get { return model.Location_str; }
 
         }
 
