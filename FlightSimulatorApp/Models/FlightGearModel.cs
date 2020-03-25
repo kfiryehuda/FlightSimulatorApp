@@ -102,20 +102,6 @@ namespace FlightSimulatorApp.Models
             set { location = value;
                 this.NotifyPropertyChanged("Location");}
         }
-        private String location_str;
-        public String Location_str
-        {
-            
-            get
-            {
-                return location_str;
-            }
-            set
-            {
-                location_str = value;
-                this.NotifyPropertyChanged("Location_str");
-            }
-        }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propName)
@@ -127,6 +113,105 @@ namespace FlightSimulatorApp.Models
 
 
         }
+
+        private double air_speed;
+        public double Air_speed
+        {
+            get { return air_speed; }
+            set
+            {
+                air_speed = value;
+                this.NotifyPropertyChanged("Air_speed");
+            }
+        }
+
+        private double altitude;
+        public double Altitude
+        {
+            get { return altitude; }
+            set
+            {
+                altitude = value;
+                this.NotifyPropertyChanged("Altitude");
+            }
+        }
+        private double roll;
+        public double Roll
+        {
+            get { return roll; }
+            set
+            {
+                roll = value;
+                this.NotifyPropertyChanged("Roll");
+            }
+        }
+
+        private double pitch;
+        public double Pitch
+        {
+            get { return pitch; }
+            set
+            {
+                pitch = value;
+                this.NotifyPropertyChanged("Pitch");
+            }
+        }
+        private double altimeter;
+        public double Altimeter
+        {
+            get { return altimeter; }
+            set
+            {
+                altimeter = value;
+                this.NotifyPropertyChanged("Altimeter");
+            }
+        }
+
+        private double heading;
+        public double Heading
+        {
+            get { return heading; }
+            set
+            {
+                heading = value;
+                this.NotifyPropertyChanged("Heading");
+            }
+        }
+        private double ground_speed;
+        public double Ground_speed
+        {
+            get { return ground_speed; }
+            set
+            {
+                ground_speed = value;
+                this.NotifyPropertyChanged("Ground_speed");
+            }
+        }
+
+        private double vertical_speed;
+        public double Vertical_speed
+        {
+            get { return vertical_speed; }
+            set
+            {
+                vertical_speed = value;
+                this.NotifyPropertyChanged("Vertical_speed");
+            }
+        }
+        
+        private String location_str;
+        public String Location_str
+        {
+            get { return location_str; }
+            set
+            {
+                location_str = value;
+                this.NotifyPropertyChanged("Location_str");
+                //client.write("get /position/latitude-deg " + latitude + "\n");
+
+                //Console.WriteLine("read" + client.read()) ;
+            }
+        }
         public void connect(string ip, int port)
         {
             client.connect(ip, port);
@@ -137,22 +222,44 @@ namespace FlightSimulatorApp.Models
             client.disconnect();
         }
         
+
         public void start()
         {
             new Thread(delegate ()
             {
                 while (!stop)
                 {
-                    //write all the rpoperty to the client
+                    
                     client.write("get /position/latitude-deg\n");
-                    //receve all property neaded from the client
-                    //Console.WriteLine(client.read());
                     this.Latitude = Convert.ToDouble(client.read()) ;
-                    //write all the rpoperty to the client
+
                     client.write("get /position/longitude-deg\n");
-                    //receve all property neaded from the client
-                    //Console.WriteLine(client.read());
                     this.Longitude = Convert.ToDouble(client.read());
+
+                    client.write("get /instrumentation/airspeed-indicator/indicated-speed-kt\n");
+                    this.Air_speed = Convert.ToDouble(client.read());
+
+                    client.write("get /instrumentation/gps/indicated-altitude-ft\n");
+                    this.Altitude = Convert.ToDouble(client.read());
+
+                    client.write("get /instrumentation/attitude-indicator/internal-roll-deg\n");
+                    this.Roll = Convert.ToDouble(client.read());
+
+                    client.write("get /instrumentation/attitude-indicator/internal-pitch-deg\n");
+                    this.Pitch = Convert.ToDouble(client.read());
+
+                    client.write("get /instrumentation/altimeter/indicated-altitude-ft\n");
+                    this.Altimeter = Convert.ToDouble(client.read());
+
+                    client.write("get /instrumentation/heading-indicator/indicated-heading-deg\n");
+                    this.Heading = Convert.ToDouble(client.read());
+
+                    client.write("get /instrumentation/gps/indicated-ground-speed-kt\n");
+                    this.Ground_speed = Convert.ToDouble(client.read());
+
+                    client.write("get /instrumentation/gps/indicated-vertical-speed\n");
+                    this.Vertical_speed = Convert.ToDouble(client.read());
+
                     this.Location_str = Convert.ToString(latitude + "," + longitude);
                     Thread.Sleep(250);
                 }

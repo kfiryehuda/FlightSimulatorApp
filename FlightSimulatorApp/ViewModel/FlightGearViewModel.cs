@@ -11,9 +11,9 @@ namespace FlightSimulatorApp.ViewModel
 {
     public class FlightGearViewModel : IFlightGearViewModel
     {
-        private FlightGearModel model;
+        private IFlightGearModel model;
         public event PropertyChangedEventHandler PropertyChanged;
-        public FlightGearViewModel(FlightGearModel model)
+        public FlightGearViewModel(IFlightGearModel model)
         {
             this.model = model;
             model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
@@ -38,40 +38,46 @@ namespace FlightSimulatorApp.ViewModel
         private double rudder, elevator, aileron, throttle;
         public double VM_Rudder
         {
-            get { return rudder; }
-            set { rudder = value/170; model.Rudder = value/170; }
+            get { return Convert.ToDouble(Convert.ToInt32(rudder * 100))/100; }
+            set { rudder = value; model.Rudder = value; }
             
         }
         public double VM_Elevator
         {
-            get { return elevator; }
-            set { elevator = value/170; model.Elevator = value/170; }
+            get { return Convert.ToDouble(Convert.ToInt32(elevator * 100)) / 100; }
+            set { elevator = value; model.Elevator = value; }
             
         }
         public double VM_Aileron
         {
-            get { return aileron; }
+            get { return Convert.ToDouble(Convert.ToInt32(aileron * 100)) / 100; }
             set { aileron = value; model.Aileron = value; }
 
         }
         public double VM_Throttle
         {
-            get { return throttle; }
+            get { return Convert.ToDouble(Convert.ToInt32(throttle * 100)) / 100; }
             set { throttle = value; model.Throttle = value; }
 
         }
 
         public double VM_Longitude
         {
-            get { 
-                return model.Longitude; }
+            get
+            {
+                
+                return Convert.ToDouble(Convert.ToInt32(model.Longitude * 100)) / 100; }
             
         }
 
         public double VM_Latitude
         {
-            get { return model.Latitude; }
-
+            get
+            {
+                //Location_str = Convert.ToString(VM_Latitude) + "," + Convert.ToString(VM_Longitude);
+                return Convert.ToDouble(Convert.ToInt32(model.Latitude * 100)) / 100;
+            }
+        
         }
 
         public GeoCoordinate VM_Location
@@ -79,13 +85,71 @@ namespace FlightSimulatorApp.ViewModel
             get { return new GeoCoordinate(VM_Latitude, VM_Longitude); }
 
         }
+
+
         public String VM_Location_str
         {
-            get { return model.Location_str;}
+
+            get { return model.Location_str; }
 
         }
-        
-            
+
+        public double VM_Air_speed
+        {
+            get { return Convert.ToDouble(Convert.ToInt32(model.Air_speed *100))/100; }
+
+        }
+
+
+        public double VM_Altitude
+        {
+            get { return Convert.ToDouble(Convert.ToInt32(model.Altitude * 100)) / 100; }
+
+        }
+
+        public double VM_Roll
+        {
+            get { return Convert.ToDouble(Convert.ToInt32(model.Roll * 100))/ 100; }
+
+        }
+
+
+        public double VM_Pitch
+        {
+            get { return Convert.ToDouble(Convert.ToInt32(model.Pitch * 100)) / 100; }
+
+        }
+
+
+        public double VM_Altimeter
+        {
+            get { return Convert.ToDouble(Convert.ToInt32(model.Altimeter * 100)) / 100; }
+
+        }
+
+
+        public double VM_Heading
+        {
+            get { return Convert.ToDouble(Convert.ToInt32(model.Heading * 100)) / 100 ; }
+
+        }
+
+
+        public double VM_Ground_speed
+        {
+            get { return Convert.ToDouble(Convert.ToInt32(model.Ground_speed * 100)) / 100 ; }
+
+        }
+
+
+        public double VM_Vertical_speed
+        {
+            get { return Convert.ToDouble(Convert.ToInt32(model.Vertical_speed * 100)) / 100; }
+
+        }
+
+
+
 
     }
 }

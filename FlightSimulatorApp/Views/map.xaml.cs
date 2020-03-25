@@ -25,10 +25,11 @@ namespace FlightSimulatorApp.Views
 
         public map()
         {
-            InitializeComponent();
-           
 
+            InitializeComponent();
+          
         }
-     
+
+
     }
 }

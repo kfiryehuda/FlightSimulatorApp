@@ -32,10 +32,10 @@ namespace FlightSimulatorApp
             //client.connect(ip, port);
             vm = new FlightGearViewModel(new FlightGearModel(client));
             DataContext = vm;
-            controller.DataContext = vm;
-            controller.joy.DataContext = vm;
+
             map.DataContext = vm;
             disconnectButton.IsEnabled = false;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
