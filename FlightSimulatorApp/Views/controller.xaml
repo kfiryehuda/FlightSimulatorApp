@@ -13,7 +13,7 @@
     <Grid>
         <Controls:joistick x:Name="joy" Margin="0,-2,0,-24"/>
             <Slider x:Name="aileSlider" Value="{Binding VM_Aileron, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}"  Maximum="1" Minimum="-1" TickFrequency="0.01" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Margin="244,-10,0,426" HorizontalAlignment="Left" Width="336"  />
-            <Slider x:Name="throSlider" Value="{Binding VM_Throttle, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}"  Maximum="1" Minimum="-1" TickFrequency="0.01" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Margin="17,233,0,183" HorizontalAlignment="Left" Width="334" RenderTransformOrigin="0.5,0.5"  >
+            <Slider x:Name="throSlider" Value="{Binding VM_Throttle, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"  Maximum="1" Minimum="-1" TickFrequency="0.01" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Margin="17,233,0,183" HorizontalAlignment="Left" Width="334" RenderTransformOrigin="0.5,0.5"  >
             <Slider.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -26,8 +26,9 @@
         <TextBlock HorizontalAlignment="Left" Margin="391,16,0,0" TextWrapping="Wrap" Text="Aileron" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="104,230,0,0" TextWrapping="Wrap" Text="Trottle" VerticalAlignment="Top"/>
             <TextBlock Text="{Binding ElementName=aileSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" x:Name="aile" HorizontalAlignment="Left" Margin="407,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-            <TextBlock Text="{Binding ElementName=throSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" x:Name="thro" HorizontalAlignment="Left" Margin="116,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-    </Grid>
+            <TextBlock Text="{Binding VM_Throttle, UpdateSourceTrigger=PropertyChanged}" x:Name="thro" HorizontalAlignment="Left" Margin="116,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+            <TextBlock Text="{Binding VM_Elevator, UpdateSourceTrigger=PropertyChanged}" x:Name="elevatorA" HorizontalAlignment="Left" Margin="586,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        </Grid>
 
     </Viewbox>
 </UserControl>
