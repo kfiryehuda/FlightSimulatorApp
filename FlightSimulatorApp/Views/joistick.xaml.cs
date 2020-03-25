@@ -44,8 +44,6 @@ namespace FlightSimulatorApp.Views
                 {
                     knobPosition.X = x;
                     knobPosition.Y = y;
-                    rudd.Text = Convert.ToString(x/ (Base.Width/2));
-                    elev.Text = Convert.ToString(y/ (Base.Width/2));
                 }
                 
                 
@@ -57,9 +55,6 @@ namespace FlightSimulatorApp.Views
         {
             knobPosition.X = 0;
             knobPosition.Y = 0;
-            rudd.Text = "0";
-            elev.Text = "0";
-
             Knob.ReleaseMouseCapture();
         }
 
