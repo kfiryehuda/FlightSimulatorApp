@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using FlightSimulatorApp.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,12 +27,14 @@ namespace FlightSimulatorApp
             InitializeComponent();
         }
         public Client client { get; set; }
-
+        public IFlightGearViewModel vm;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Console.WriteLine(port.Text);
             client.connect(ip.Text, Convert.ToInt32(port.Text));
             this.Hide();
+            vm.Start();
+            
         }
     }
 }
