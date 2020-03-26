@@ -2,6 +2,7 @@
 using FlightSimulatorApp.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,6 +26,8 @@ namespace FlightSimulatorApp
         public Connect()
         {
             InitializeComponent();
+            port.Text = ConfigurationManager.AppSettings.Get("Port");
+            ip.Text = ConfigurationManager.AppSettings.Get("IP");
         }
         public Client client { get; set; }
         public IFlightGearViewModel vm;

@@ -103,6 +103,7 @@ namespace FlightSimulatorApp.Models
                 //Console.WriteLine("read" + client.read()) ;
             }
         }
+
         private GeoCoordinate location;
         public GeoCoordinate Location { 
             get { return location; }

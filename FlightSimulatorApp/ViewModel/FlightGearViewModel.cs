@@ -60,46 +60,48 @@ namespace FlightSimulatorApp.ViewModel
         {
             get { return Convert.ToDouble(Convert.ToInt32(aileron * 100)) / 100; }
             set { aileron = value; model.Aileron = value; }
-
         }
         public double VM_Throttle
         {
             get { return Convert.ToDouble(Convert.ToInt32(throttle * 100)) / 100; }
             set { throttle = value; model.Throttle = value; }
-
         }
-
         public double VM_Longitude
         {
-            get
-            {
-                
+            get {
+                if (model.Longitude > 180)
+                {
+                    return 180;
+                    
+                }
+                else if (model.Longitude < -180)
+                {
+                    return -180;
+                }
                 return Convert.ToDouble(Convert.ToInt32(model.Longitude * 100)) / 100; }
-            
-        }
-
+       }
         public double VM_Latitude
         {
-            get
-            {
-                //Location_str = Convert.ToString(VM_Latitude) + "," + Convert.ToString(VM_Longitude);
-                return Convert.ToDouble(Convert.ToInt32(model.Latitude * 100)) / 100;
-            }
-        
+            get {
+                if (model.Longitude > 90)
+                {
+                    return 90;
+                }
+                else if (model.Longitude < -90)
+                {
+                    return -90;
+                }
+                return Convert.ToDouble(Convert.ToInt32(model.Latitude * 100)) / 100;}
         }
-
         public GeoCoordinate VM_Location
         {
             get { return new GeoCoordinate(VM_Latitude, VM_Longitude); }
-
         }
 
 
         public String VM_Location_str
         {
-
-            get { return model.Location_str; }
-
+            get { return Convert.ToString(VM_Latitude + "," + VM_Longitude); }
         }
 
         public double VM_Air_speed
