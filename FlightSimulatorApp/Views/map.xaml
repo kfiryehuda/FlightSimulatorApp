@@ -26,7 +26,7 @@
         </m:Map>
         <TextBox x:Name="out1" FontSize="30" TextWrapping="Wrap" Text="The plain is out of the map" Margin="80,119,82.5,126"/>
         <TextBox x:Name="t" Visibility="Hidden" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding VM_Longitude, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" VerticalAlignment="Top" Width="120" TextChanged="t_TextChanged"/>
-        <TextBox x:Name="t2" Visibility="Hidden" HorizontalAlignment="Left" Height="50" TextWrapping="Wrap" Text="{Binding VM_Latitude, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" VerticalAlignment="Top" Width="120" TextChanged="t_TextChanged"/>
+        <TextBox x:Name="t2" Visibility="Hidden"  Text="{Binding VM_Latitude, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" VerticalAlignment="Top" Width="120" TextChanged="t_TextChanged"/>
 
 
     </Grid>

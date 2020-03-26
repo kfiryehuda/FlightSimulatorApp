@@ -22,14 +22,13 @@ namespace FlightSimulatorApp
     /// </summary>
     public partial class Connect : Window
     {
-        
+        public Boolean isFocus;
         public Connect()
         {
             InitializeComponent();
             port.Text = ConfigurationManager.AppSettings.Get("Port");
             ip.Text = ConfigurationManager.AppSettings.Get("IP");
         }
-        public Client client { get; set; }
         public IFlightGearViewModel vm;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -37,8 +36,16 @@ namespace FlightSimulatorApp
 
             vm.Start(ip.Text, Convert.ToInt32(port.Text));
             this.Hide();
+        }
+        public void showW()
+        {
+            this.Show();
+            isFocus = true;
+        }
 
-
+        private void ConnectWindow_LostFocus(object sender, RoutedEventArgs e)
+        {
+            isFocus = false;
         }
     }
 }

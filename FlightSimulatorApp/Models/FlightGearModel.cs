@@ -18,18 +18,24 @@ namespace FlightSimulatorApp.Models
         public FlightGearModel(IClient client)
         {
             this.client = client;
-
+            client.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
+            {
+                NotifyPropertyChanged(e.PropertyName);
+            };
         }
+        public Boolean Connected
+        {
+            get { return client.Connected; }
+            set { this.NotifyPropertyChanged("Connected"); }
+        }
+
         private double rudder;
         public double Rudder { 
             get { return rudder; } 
             set {
-               
                 rudder = value;
-
                 client.writeAndRead("set /controls/flight/rudder " + rudder + "\n");
                 this.NotifyPropertyChanged("Rudder");
-                
             }
         }
         private double elevator;
@@ -119,8 +125,6 @@ namespace FlightSimulatorApp.Models
             {
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
-
-
         }
 
         private double air_speed;

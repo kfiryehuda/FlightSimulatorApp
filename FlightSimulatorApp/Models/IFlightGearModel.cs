@@ -34,10 +34,10 @@ namespace FlightSimulatorApp.Models
         double Ground_speed { get; set; }
         double Vertical_speed { get; set; }
         String Location_str { set; get; }
+        Boolean Connected { get;  }
 
 
 
-        
     }
 }
 

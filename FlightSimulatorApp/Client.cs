@@ -9,19 +9,36 @@ using System.Net;
 using System.Net.Sockets;
 
 using System.IO;
-
+using System.ComponentModel;
 
 namespace FlightSimulatorApp
 {
 
     public class Client : IClient
     {
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void NotifyPropertyChanged(string propName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
+        }
 
 
         Object obj = new object();
         TcpClient tcpClient;
         NetworkStream netStream;
-        Boolean conected = false;
+        private Boolean connected = false;
+        public Boolean Connected
+        {
+            get { return connected; }
+            set
+            {
+                connected = value;
+                this.NotifyPropertyChanged("Connected");
+            }
+        }
         public Boolean connect(string ip, int port)
         {
 
@@ -37,7 +54,7 @@ namespace FlightSimulatorApp
 
                 //String str = Console.ReadLine();
                 netStream = tcpClient.GetStream();
-                conected = true;
+                Connected = true;
                 return true;
             }
 
@@ -51,10 +68,11 @@ namespace FlightSimulatorApp
 
         public void disconnect()
         {
-            if (conected)
+            if (Connected)
             {
                 netStream.Close();
                 tcpClient.Close();
+                Connected = false;
             }
             else 
             {
@@ -65,7 +83,7 @@ namespace FlightSimulatorApp
 
         public string writeAndRead(string command)
         {
-           if (!conected)
+           if (!Connected)
             {
                 return "";
             }

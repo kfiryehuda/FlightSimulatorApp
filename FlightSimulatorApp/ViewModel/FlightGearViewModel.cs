@@ -157,10 +157,9 @@ namespace FlightSimulatorApp.ViewModel
             get { return Convert.ToDouble(Convert.ToInt32(model.Vertical_speed * 100)) / 100; }
 
         }
-
-
-  
-
-
+        public Boolean VM_Connected
+        {
+            get { Console.WriteLine("con"); return model.Connected; }
+        }
     }
 }
