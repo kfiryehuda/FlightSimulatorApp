@@ -32,7 +32,7 @@ namespace FlightSimulatorApp
                 // use the ipaddress as in the server program
                 Console.WriteLine("Connected");
 
-                String str = Console.ReadLine();
+                //String str = Console.ReadLine();
                 netStream = tcpClient.GetStream();
                 conected = true;
                 return true;

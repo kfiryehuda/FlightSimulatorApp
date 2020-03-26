@@ -25,11 +25,23 @@ namespace FlightSimulatorApp.Views
 
         public map()
         {
-
             InitializeComponent();
-          
         }
 
-
+        private void t_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Console.WriteLine(t.Text);
+            if(t.Text == "180" || t.Text == "-180" || t2.Text == "90" || t2.Text == "-90")
+            {
+                out1.Visibility = Visibility.Visible;
+                imageCanvas.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                imageCanvas.Visibility = Visibility.Visible;
+                out1.Visibility = Visibility.Hidden;
+            }
+            
+        }
     }
 }
