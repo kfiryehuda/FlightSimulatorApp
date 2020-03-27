@@ -55,14 +55,9 @@ namespace FlightSimulatorApp
             vm.Stop();
             //connectButton.IsEnabled = true;
         }
-
-        private void map_Loaded(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void serverStatus_TextChanged(object sender, TextChangedEventArgs e)
         {
+            Console.WriteLine("textCanged");
             if(serverStatus.Text == "True")
             {
                 connectButton.IsEnabled = false;
@@ -74,19 +69,6 @@ namespace FlightSimulatorApp
                 disconnectButton.IsEnabled = false;
             }
         }
-
-        private void main_GotFocus(object sender, RoutedEventArgs e)
-        {
-            if(connectWindow.isFocus == true)
-            {
-                this.IsEnabled = false;
-            }
-            else
-            {
-                this.IsEnabled = true;
-            }
-        }
-
         //Method to implement syncronization using Mutex  
 
 

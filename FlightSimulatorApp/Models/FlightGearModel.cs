@@ -237,15 +237,14 @@ namespace FlightSimulatorApp.Models
 
         public void start(string ip, int port)
         {
-           
-            if(!client.connect(ip, port)){
-                return;
-            }
-           
-            stop = false;
             new Thread(delegate ()
             {
+                if (!client.connect(ip, port))
+                {
+                    return;
+                }
 
+                stop = false;
                 while (!stop)
                 {
                     

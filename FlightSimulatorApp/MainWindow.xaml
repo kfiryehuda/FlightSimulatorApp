@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:FlightSimulatorApp"
         mc:Ignorable="d"
         xmlns:Controls="clr-namespace:FlightSimulatorApp.Views"
-        Title="MainWindow" Height="800" Width="1145.25" GotFocus="main_GotFocus">
+        Title="MainWindow" Height="800" Width="1145.25">
 
     <!--FlowDocumentScrollViewer>
         <FlowDocument>
@@ -83,7 +83,7 @@
                 </TransformGroup>
             </Controls:controller.RenderTransform>
         </Controls:controller>
-        <Controls:map x:Name="map" Margin="-381,6,15,67"   Grid.Row="8" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Loaded="map_Loaded"  >
+        <Controls:map x:Name="map" Margin="-381,6,15,67"   Grid.Row="8" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" >
 
             <Controls:map.RenderTransform>
                 <TransformGroup>
