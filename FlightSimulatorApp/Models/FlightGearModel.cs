@@ -12,9 +12,10 @@ namespace FlightSimulatorApp.Models
     public class FlightGearModel : IFlightGearModel
     {
 
-
         private IClient client;
         volatile Boolean stop;
+        volatile Boolean disconnectedDueTOError;
+
         public FlightGearModel(IClient client)
         {
             this.client = client;
@@ -29,6 +30,34 @@ namespace FlightSimulatorApp.Models
             set { this.NotifyPropertyChanged("Connected"); }
         }
 
+        public Boolean DisconnectedDueTOError
+        {
+            get { return disconnectedDueTOError; }
+            set {
+                disconnectedDueTOError = value;
+                this.NotifyPropertyChanged("DisconnectedDueTOError"); }
+        }
+        private String ip;
+        public String Ip
+        {
+            get { return ip; }
+            set
+            {
+                ip = value;
+                this.NotifyPropertyChanged("Ip");
+            }
+        }
+        private String port;
+        public String Port
+        {
+            get { return port; }
+            set
+            {
+                port = value;
+                this.NotifyPropertyChanged("Port");
+            }
+        }
+
         private double rudder;
         public double Rudder { 
             get { return rudder; } 
@@ -38,6 +67,8 @@ namespace FlightSimulatorApp.Models
                 this.NotifyPropertyChanged("Rudder");
             }
         }
+
+
         private double elevator;
         public double Elevator
         {
@@ -233,8 +264,80 @@ namespace FlightSimulatorApp.Models
             client.disconnect();
         }
 
+        
 
+        private Double switchReadWrite(int caseSwitch)
+        {
+            String strToRet = "";
+            Double valToRet;
+            switch (caseSwitch)
+            {
+                case 1:
+                    strToRet = client.writeAndRead("get /position/latitude-deg\n");
+                    break;
+                case 2:
+                    strToRet = client.writeAndRead("get /position/longitude-deg\n");
+                    break;
+                case 3:
+                    strToRet = client.writeAndRead("get /instrumentation/airspeed-indicator/indicated-speed-kt\n");
+                    break;
+                case 4:
+                    strToRet = client.writeAndRead("get /instrumentation/gps/indicated-altitude-ft\n");
+                    break;
+                case 5:
+                    strToRet = client.writeAndRead("get /instrumentation/attitude-indicator/internal-roll-deg\n");
+                    break;
+                case 6:
+                    strToRet = client.writeAndRead("get /instrumentation/attitude-indicator/internal-pitch-deg\n");
+                    break;
+                case 7:
+                    strToRet = client.writeAndRead("get /instrumentation/altimeter/indicated-altitude-ft\n");
+                    break;
+                case 8:
+                    strToRet = client.writeAndRead("get /instrumentation/heading-indicator/indicated-heading-deg\n");
+                    break;
+                case 9:
+                    strToRet = client.writeAndRead("get /instrumentation/gps/indicated-ground-speed-kt\n");
+                    break;
+                case 10:
+                    strToRet = client.writeAndRead("get /instrumentation/gps/indicated-vertical-speed\n");
+                    break;
+                default:
+                    Console.WriteLine("Default case");
+                    break;
+            }
+            // Check for empty string.
+            if (string.IsNullOrEmpty(strToRet))
+            {
+                Console.WriteLine("Server not responding more than 10 second, Disconnecting... ");
+                throw new Exception();
+                
+            }
+            else if (IsDouble(strToRet))
+            {
+                valToRet = Convert.ToDouble(strToRet);
+            }
+            else
+            {
+                //if not a number return the max double value
+                Console.WriteLine("Disconected to Error message from server");
+                throw new Exception();
+            }
+               
+            return valToRet;
 
+        }
+
+        public bool IsDouble(string text)
+        {
+            Double num = 0;
+            bool isDouble = false;
+
+            
+            isDouble = Double.TryParse(text, out num);
+
+            return isDouble;
+        }
         public void start(string ip, int port)
         {
             new Thread(delegate ()
@@ -243,33 +346,33 @@ namespace FlightSimulatorApp.Models
                 {
                     return;
                 }
-
+                DisconnectedDueTOError = false;
                 stop = false;
+                Port = Convert.ToString(port);
+                Ip = ip;
                 while (!stop)
                 {
-                    
-                        this.Latitude = Convert.ToDouble(client.writeAndRead("get /position/latitude-deg\n"));
+                    try
+                    {
+                        this.Latitude = switchReadWrite(1);
+                        this.Longitude = switchReadWrite(2);
+                        this.Air_speed = switchReadWrite(3);
+                        this.Altitude = switchReadWrite(4);
+                        this.Roll = switchReadWrite(5);
+                        this.Pitch = switchReadWrite(6);
+                        this.Altimeter = switchReadWrite(7);
+                        this.Heading = switchReadWrite(8);
+                        this.Ground_speed = switchReadWrite(9);
+                        this.Vertical_speed = switchReadWrite(10);
+                    }
 
-                        this.Longitude = Convert.ToDouble(client.writeAndRead("get /position/longitude-deg\n"));
-
-                        this.Air_speed = Convert.ToDouble(client.writeAndRead("get /instrumentation/airspeed-indicator/indicated-speed-kt\n"));
-
-                        this.Altitude = Convert.ToDouble(client.writeAndRead("get /instrumentation/gps/indicated-altitude-ft\n"));
-
-                        this.Roll = Convert.ToDouble(client.writeAndRead("get /instrumentation/attitude-indicator/internal-roll-deg\n"));
-
-                        this.Pitch = Convert.ToDouble(client.writeAndRead("get /instrumentation/attitude-indicator/internal-pitch-deg\n"));
-
-                        this.Altimeter = Convert.ToDouble(client.writeAndRead("get /instrumentation/altimeter/indicated-altitude-ft\n"));
-
-                        this.Heading = Convert.ToDouble(client.writeAndRead("get /instrumentation/heading-indicator/indicated-heading-deg\n"));
-
-                        this.Ground_speed = Convert.ToDouble(client.writeAndRead("get /instrumentation/gps/indicated-ground-speed-kt\n"));
-
-                        this.Vertical_speed = Convert.ToDouble(client.writeAndRead("get /instrumentation/gps/indicated-vertical-speed\n"));
-
-                        this.Location_str = Convert.ToString(latitude + "," + longitude);
-                        Thread.Sleep(250);
+                    catch (Exception e)
+                    {
+                        disconnect();
+                        DisconnectedDueTOError = true;
+                    }
+                    this.Location_str = Convert.ToString(latitude + "," + longitude);
+                    Thread.Sleep(250);
                   
 
                 }

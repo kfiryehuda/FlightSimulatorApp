@@ -13,11 +13,15 @@ namespace FlightSimulatorApp.Models
     {
 
         void disconnect();
+
         void start(string ip, int port);
 
         // TODO add map property
 
         // joystick property
+
+        string Ip { set; get; }
+        string Port { set; get; }
         double Rudder { set; get; }
         double Elevator { set; get; }
         double Aileron { set; get; }
@@ -35,7 +39,7 @@ namespace FlightSimulatorApp.Models
         double Vertical_speed { get; set; }
         String Location_str { set; get; }
         Boolean Connected { get;  }
-
+        Boolean DisconnectedDueTOError { get; }
 
 
     }

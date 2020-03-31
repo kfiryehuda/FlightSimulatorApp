@@ -42,7 +42,23 @@ namespace FlightSimulatorApp.ViewModel
         {
             model.disconnect();
         }
+        public String VM_Port
+        {
+            get { return model.Port; }
+            set
+            {
+                model.Port = value;
+            }
+        }
 
+        public String VM_Ip
+        {
+            get { return model.Ip; }
+            set
+            {
+                model.Ip = value;
+            }
+        }
         private double rudder, elevator, aileron, throttle;
         public double VM_Rudder
         {
@@ -160,6 +176,11 @@ namespace FlightSimulatorApp.ViewModel
         public Boolean VM_Connected
         {
             get { Console.WriteLine("con"); return model.Connected; }
+        }
+
+        public Boolean VM_DisconnectedDueTOError
+        {
+            get { return model.DisconnectedDueTOError; }
         }
     }
 }

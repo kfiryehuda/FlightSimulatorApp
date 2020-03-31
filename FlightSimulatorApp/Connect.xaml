@@ -12,10 +12,10 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Button Content="Connect" HorizontalAlignment="Left" Margin="94.167,159,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Grid.Column="1"/>
-        <TextBox x:Name="port" HorizontalAlignment="Left" Height="23" Margin="71.167,113,0,0" TextWrapping="Wrap" Text="5402" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <TextBox x:Name="ip" HorizontalAlignment="Left" Height="23" Margin="71.167,59,0,0" TextWrapping="Wrap" Text="192.168.1.13" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <TextBox x:Name="port" Text="{Binding VM_Port, UpdateSourceTrigger=PropertyChanged,Mode=OneWayToSource}" HorizontalAlignment="Left" Height="23" Margin="71.167,113,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1"/>
+        <TextBox x:Name="ip" Text="{Binding VM_Ip, UpdateSourceTrigger=PropertyChanged,Mode=OneWayToSource}" HorizontalAlignment="Left" Height="23" Margin="71.167,59,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" Grid.Column="1"/>
         <TextBlock HorizontalAlignment="Left" Margin="71.167,38,0,0" TextWrapping="Wrap" Text="IP" VerticalAlignment="Top" Grid.Column="1"/>
         <TextBlock HorizontalAlignment="Left" Margin="71.167,92,0,0" TextWrapping="Wrap" Text="Port" VerticalAlignment="Top" Grid.Column="1"/>
-
+        
     </Grid>
 </Window>

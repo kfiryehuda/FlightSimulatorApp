@@ -43,5 +43,10 @@ namespace FlightSimulatorApp.Views
             }
             
         }
+
+        private void out1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

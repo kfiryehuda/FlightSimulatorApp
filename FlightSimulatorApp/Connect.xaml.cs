@@ -35,6 +35,7 @@ namespace FlightSimulatorApp
             Console.WriteLine(port.Text);
 
             vm.Start(ip.Text, Convert.ToInt32(port.Text));
+            
             this.Hide();
         }
         public void showW()
