@@ -26,7 +26,7 @@
             <RowDefinition Height="82*"/>
             <RowDefinition Height="109*"/>
         </Grid.RowDefinitions>
-        <Button Name="connectButton" Content="Connect" HorizontalAlignment="Left" Margin="-357,30,0,0" Width="74" Click="Button_Click"/>
+        <Button Name="connectButton" Content="Connect" HorizontalAlignment="Left" Margin="-362,15,0,15" Width="74" Click="Button_Click"/>
         <Controls:controller x:Name="controller" Margin="85,46,-488,28" Grid.Row="4" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="6" Grid.ColumnSpan="3"  >
             <Controls:controller.RenderTransform>
                 <TransformGroup>
@@ -38,7 +38,7 @@
             </Controls:controller.RenderTransform>
         </Controls:controller>
 
-        <Controls:map x:Name="map" Margin="-396,10,31,42"   Grid.Row="2" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.RowSpan="8" >
+        <Controls:map x:Name="map" Margin="-401,32,36,18"   Grid.Row="6" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="4" Grid.ColumnSpan="2" >
 
             <Controls:map.RenderTransform>
                 <TransformGroup>
@@ -50,10 +50,10 @@
             </Controls:map.RenderTransform>
         </Controls:map>
         <Controls:DashBoard Margin="42,-7,-484,0" Grid.RowSpan="5" Grid.Column="2" />
-        <Button Name="disconnectButton" Content="Disconnect" HorizontalAlignment="Left" Margin="-255,30,0,0" Width="75" Height="20" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Button Name="disconnectButton" Content="Disconnect" HorizontalAlignment="Left" Margin="-256,15,0,0" Width="75" Height="20" VerticalAlignment="Top" Click="Button_Click_1"/>
         <TextBox x:Name="serverStatus" Visibility="Hidden" BorderThickness="0" Text="{Binding VM_Connected, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" TextChanged="serverStatus_TextChanged" />
 
-        <Label x:Name="disconnectServerErr"  FontSize="20" HorizontalAlignment="Left" Height="78" Margin="-406,0,0,0" Grid.Row="1" Content="" VerticalAlignment="Top" Width="577" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
+        <Label x:Name="Status" BorderThickness="5" BorderBrush="AliceBlue" FontSize="14" HorizontalAlignment="Left" Height="207" Margin="-401,34,0,0" Grid.Row="1" Content="{Binding VM_Status, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" VerticalAlignment="Top" Width="549" Grid.ColumnSpan="2" Grid.RowSpan="6"/>
         <TextBox x:Name="disconnectServerErrLbl" Visibility="Hidden"  Text="{Binding VM_DisconnectedDueTOError, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" TextChanged="TextBox_TextChanged"/>
 
 

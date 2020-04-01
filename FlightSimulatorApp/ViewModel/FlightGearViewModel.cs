@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Device.Location;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -22,8 +23,6 @@ namespace FlightSimulatorApp.ViewModel
                  NotifyPropertyChanged("VM_" + e.PropertyName);
                  
              };
-            
-            
         }
 
         public void NotifyPropertyChanged(string propName)
@@ -40,10 +39,10 @@ namespace FlightSimulatorApp.ViewModel
             cachePort = port;
             model.start(ip, port);
         }
-
         public void Stop()
         {
             model.disconnect();
+            VM_Status = "Disconnected";
         }
         public void reconnect()
         {
@@ -56,6 +55,31 @@ namespace FlightSimulatorApp.ViewModel
                     Start(cacheIp, cachePort);
                 }
             }).Start();
+        }
+        private int statusCounter=0;
+        private String status = "";
+        public String VM_Status
+        {
+            get { return status; }
+            set
+            {
+                String val = value;
+                Console.WriteLine(status.Contains(value));
+                if (!status.Contains(val) && statusCounter < 6 && statusCounter != 0)
+                {
+                    statusCounter += 1;
+                    status += "\n" + val;
+                }
+                else
+                {
+                    if (!status.Contains("Plain"))
+                    {
+                        status = val;
+                        statusCounter = 1;
+                    }
+                }
+                NotifyPropertyChanged("VM_Status"); 
+            }
         }
         public String VM_Port
         {
@@ -102,11 +126,13 @@ namespace FlightSimulatorApp.ViewModel
             get {
                 if (model.Longitude > 180)
                 {
+                    VM_Status = "Plain is out of the map!";
                     return 180;
                     
                 }
                 else if (model.Longitude < -180)
                 {
+                    VM_Status = "Plain is out of the map!";
                     return -180;
                 }
                 return Convert.ToDouble(Convert.ToInt32(model.Longitude * 100)) / 100; }
@@ -116,10 +142,12 @@ namespace FlightSimulatorApp.ViewModel
             get {
                 if (model.Longitude > 90)
                 {
+                    VM_Status = "Plain is out of the map!";
                     return 90;
                 }
                 else if (model.Longitude < -90)
                 {
+                    VM_Status = "Plain is out of the map!";
                     return -90;
                 }
                 return Convert.ToDouble(Convert.ToInt32(model.Latitude * 100)) / 100;}
@@ -190,12 +218,29 @@ namespace FlightSimulatorApp.ViewModel
         }
         public Boolean VM_Connected
         {
-            get { Console.WriteLine("con"); return model.Connected; }
+            get {
+                if (model.Connected)
+                {
+                    VM_Status = "Connected To FlightGear!";
+                }
+                else
+                {
+                    //VM_Status = "Disonnected";
+                }
+                return model.Connected; 
+            }
         }
 
         public Boolean VM_DisconnectedDueTOError
         {
-            get { return model.DisconnectedDueTOError; }
+            get 
+            {
+                if (model.DisconnectedDueTOError)
+                {
+                    VM_Status = "Error from server, try to Reconnect..";
+                }
+                return model.DisconnectedDueTOError;
+            }
         }
     }
 }

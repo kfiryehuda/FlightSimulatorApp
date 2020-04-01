@@ -32,33 +32,29 @@ namespace FlightSimulatorApp
            
             InitializeComponent();
             client = new Client();
-            //client.connect(ip, port);
             vm = new FlightGearViewModel(new FlightGearModel(client));
             DataContext = vm;
             map.DataContext = vm;
             disconnectButton.IsEnabled = false;
             connectWindow = new Connect();
+            string s = "kfir";
 
+            Console.WriteLine(s.Contains("k"));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //connectButton.IsEnabled = false;
             connectWindow.vm = vm;
             connectWindow.showW();
-            //disconnectButton.IsEnabled = true;
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
-            //disconnectButton.IsEnabled = false;
             vm.Stop();
-            //connectButton.IsEnabled = true;
         }
         private void serverStatus_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Console.WriteLine("textCanged");
             if(serverStatus.Text == "True")
             {
                 connectButton.IsEnabled = false;
@@ -74,17 +70,16 @@ namespace FlightSimulatorApp
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             
-            //Console.WriteLine("textCanged ", disconnectServerErrLbl.Text);
             if (disconnectServerErrLbl.Text == "True")
             {
 
-                disconnectServerErr.Content = "Error from server disconnecting... Try Reconnecting";
-                disconnectServerErr.Visibility = Visibility.Visible;
-                vm.reconnect();
+                //disconnectServerErr.Content = "Error from server disconnecting... Try Reconnecting";
+                //disconnectServerErr.Visibility = Visibility.Visible;
+                //vm.reconnect();
             }
             else
             {
-                disconnectServerErr.Visibility = Visibility.Hidden;
+                //disconnectServerErr.Visibility = Visibility.Hidden;
             }
             
         }

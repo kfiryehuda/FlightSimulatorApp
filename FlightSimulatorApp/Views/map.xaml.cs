@@ -30,7 +30,6 @@ namespace FlightSimulatorApp.Views
 
         private void t_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Console.WriteLine(t.Text);
             if(t.Text == "180" || t.Text == "-180" || t2.Text == "90" || t2.Text == "-90")
             {
                 out1.Visibility = Visibility.Visible;
