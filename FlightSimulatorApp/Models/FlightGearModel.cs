@@ -373,8 +373,6 @@ namespace FlightSimulatorApp.Models
                     }
                     this.Location_str = Convert.ToString(latitude + "," + longitude);
                     Thread.Sleep(250);
-                  
-
                 }
             }).Start();
         }

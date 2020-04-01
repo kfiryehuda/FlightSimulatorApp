@@ -9,6 +9,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -53,6 +54,8 @@ namespace FlightSimulatorApp.Views
 
         private void Knob_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            Storyboard sb = (Storyboard)Knob.FindResource("centerKnob");
+            //sb.Begin();
             knobPosition.X = 0;
             knobPosition.Y = 0;
             Knob.ReleaseMouseCapture();
@@ -60,8 +63,6 @@ namespace FlightSimulatorApp.Views
 
         private void Knob_MouseLeave(object sender, MouseEventArgs e)
         {
-            knobPosition.X = 0;
-            knobPosition.Y = 0;
         }
     }
 }

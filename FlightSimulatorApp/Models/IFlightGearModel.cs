@@ -15,7 +15,6 @@ namespace FlightSimulatorApp.Models
         void disconnect();
 
         void start(string ip, int port);
-
         // TODO add map property
 
         // joystick property

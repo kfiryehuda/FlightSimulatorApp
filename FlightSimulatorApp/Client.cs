@@ -84,9 +84,9 @@ namespace FlightSimulatorApp
         public string writeAndRead(string command)
         {
            if (!Connected)
-            {
-                return "";
-            }
+           {
+               return "";
+           }
            if (netStream.CanRead && netStream.CanWrite)
             {
                 try

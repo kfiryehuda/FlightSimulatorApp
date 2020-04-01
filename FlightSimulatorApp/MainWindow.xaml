@@ -8,53 +8,6 @@
         xmlns:Controls="clr-namespace:FlightSimulatorApp.Views"
         Title="MainWindow" Height="800" Width="1145.25">
 
-    <!--FlowDocumentScrollViewer>
-        <FlowDocument>
-            <Paragraph FontSize="18pt">Flight Gear Control App</Paragraph>
-            <Table>
-                <TableRowGroup>
-                    <TableRow FontWeight="Bold" >
-                        <TableCell>
-                            <Paragraph>
-                                <Button Name="connectButton" Content="Connect" Width="74" Click="Button_Click"/>
-                            </Paragraph>
-                        </TableCell>
-                        <TableCell>
-                            
-                        </TableCell>
-                        
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>
-                            <Paragraph>
-                                <Button Name="disconnectButton" Content="Disconnect"  Width="100" Height="20"  Click="Button_Click_1"/>
-                            </Paragraph>
-                        </TableCell>
-                        
-                        <TableCell>
-                            <Paragraph>
-                                <Controls:DashBoard Height="261" Width="324" />
-                            </Paragraph>
-                        </TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>
-                            <Paragraph>
-                                <Controls:map x:Name="map" Height="336" Width="376" />
-                            </Paragraph>
-                        </TableCell>
-                        
-                        <TableCell>
-                            <Paragraph>
-                                <Controls:controller x:Name="controller" Height="285" Width="458" />
-                            </Paragraph>
-                        </TableCell>
-                    </TableRow>
-                </TableRowGroup>
-            </Table>
-        </FlowDocument-->
-
-
     <Grid Margin="414,0,-5,0.5">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="89" />
@@ -85,7 +38,7 @@
             </Controls:controller.RenderTransform>
         </Controls:controller>
 
-        <Controls:map x:Name="map" Margin="-371,83,7,76"   Grid.Row="7" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.RowSpan="3" >
+        <Controls:map x:Name="map" Margin="-396,10,31,42"   Grid.Row="2" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.RowSpan="8" >
 
             <Controls:map.RenderTransform>
                 <TransformGroup>
@@ -98,10 +51,9 @@
         </Controls:map>
         <Controls:DashBoard Margin="42,-7,-484,0" Grid.RowSpan="5" Grid.Column="2" />
         <Button Name="disconnectButton" Content="Disconnect" HorizontalAlignment="Left" Margin="-255,30,0,0" Width="75" Height="20" VerticalAlignment="Top" Click="Button_Click_1"/>
-        <Button Content="{Binding VM_Connected, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" HorizontalAlignment="Left" Margin="-287,18,0,0" Grid.Row="2" VerticalAlignment="Top" Width="74" Height="39" Grid.RowSpan="2"/>
         <TextBox x:Name="serverStatus" Visibility="Hidden" BorderThickness="0" Text="{Binding VM_Connected, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" TextChanged="serverStatus_TextChanged" />
 
-        <Label x:Name="disconnectServerErr"  FontSize="20" HorizontalAlignment="Left" Height="78" Margin="-405,0,0,0" Grid.Row="4" Content="" VerticalAlignment="Top" Width="577" Grid.RowSpan="3" Grid.ColumnSpan="2"/>
+        <Label x:Name="disconnectServerErr"  FontSize="20" HorizontalAlignment="Left" Height="78" Margin="-406,0,0,0" Grid.Row="1" Content="" VerticalAlignment="Top" Width="577" Grid.RowSpan="2" Grid.ColumnSpan="2"/>
         <TextBox x:Name="disconnectServerErrLbl" Visibility="Hidden"  Text="{Binding VM_DisconnectedDueTOError, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" TextChanged="TextBox_TextChanged"/>
 
 

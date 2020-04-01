@@ -31,16 +31,31 @@ namespace FlightSimulatorApp.ViewModel
             if (this.PropertyChanged != null)
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
+        private string cacheIp;
+        private int cachePort;
 
         public void Start(string ip, int port)
         {
- 
+            cacheIp = ip;
+            cachePort = port;
             model.start(ip, port);
         }
 
         public void Stop()
         {
             model.disconnect();
+        }
+        public void reconnect()
+        {
+            
+            new Thread(delegate ()
+            {
+                Thread.Sleep(8000);
+                if (!model.Connected)
+                {
+                    Start(cacheIp, cachePort);
+                }
+            }).Start();
         }
         public String VM_Port
         {

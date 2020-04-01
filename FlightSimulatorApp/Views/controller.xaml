@@ -12,7 +12,7 @@
         <Grid>
             <Controls:joistick x:Name="joy" Margin="0,-27,0,-24"/>
             <Slider x:Name="aileSlider" Value="{Binding VM_Aileron, UpdateSourceTrigger=PropertyChanged,Mode=OneWayToSource}"  Maximum="1" Minimum="-1" TickFrequency="0.01" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Margin="244,-10,0,426" HorizontalAlignment="Left" Width="336"  />
-            <Slider x:Name="throSlider" Value="{Binding VM_Throttle, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"  Maximum="1" Minimum="-1" TickFrequency="0.01" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Margin="17,233,0,183" HorizontalAlignment="Left" Width="334" RenderTransformOrigin="0.5,0.5"  >
+            <Slider x:Name="throSlider" Value="{Binding VM_Throttle, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"  Maximum="1" Minimum="0" TickFrequency="0.01" TickPlacement="BottomRight" IsSnapToTickEnabled="True" Margin="17,233,0,183" HorizontalAlignment="Left" Width="334" RenderTransformOrigin="0.5,0.5"  >
                 <Slider.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform/>

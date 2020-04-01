@@ -73,17 +73,20 @@ namespace FlightSimulatorApp
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            Console.WriteLine("textCanged ", disconnectServerErrLbl.Text);
+            
+            //Console.WriteLine("textCanged ", disconnectServerErrLbl.Text);
             if (disconnectServerErrLbl.Text == "True")
             {
 
                 disconnectServerErr.Content = "Error from server disconnecting... Try Reconnecting";
                 disconnectServerErr.Visibility = Visibility.Visible;
-                System.Threading.Thread.Sleep(10000);
-                vm.Start(ip.Text, Convert.ToInt32(port.Text));
-            } else {
+                vm.reconnect();
+            }
+            else
+            {
                 disconnectServerErr.Visibility = Visibility.Hidden;
             }
+            
         }
         //Method to implement syncronization using Mutex  
 

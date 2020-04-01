@@ -11,7 +11,7 @@ namespace FlightSimulatorApp.ViewModel
     {
         void Start(string ip, int port);
         void Stop();
-
+        void reconnect();
     }
 
 }
