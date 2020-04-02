@@ -9,27 +9,15 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" Width="546.252">
     <Grid>
-
         <m:Map x:Name="myMap" CredentialsProvider="AiJ41kTcEGJJGy3gET2SKSlv0FdEZBYUTUW_xH_O-be-j2h1hAK9tSRv98v2teYl" Center="37.806029,-122.407007" ZoomLevel="12" Margin="0,-192,0.5,0" Height="642" VerticalAlignment="Bottom">
-
-
-
             <Canvas x:Name="imageCanvas"  Width="30" Height="30"   m:MapLayer.Position="{Binding Path=VM_Location_str,UpdateSourceTrigger=PropertyChanged}" 
                     RenderOptions.BitmapScalingMode="NearestNeighbor"
                     RenderOptions.EdgeMode="Aliased" >
                 <Canvas.Background>
-                    <ImageBrush x:Name="image1"
-                               ImageSource="airplane.png">
-                    </ImageBrush>
+                    <ImageBrush x:Name="image1" ImageSource="airplane.png" />
                 </Canvas.Background>
             </Canvas>
         </m:Map>
-        <TextBox x:Name="out1" FontSize="30" TextWrapping="Wrap" Text="The plain is out of the map" Margin="78,342,84.5,60" TextChanged="out1_TextChanged"/>
-
-        <TextBox x:Name="t" Visibility="Hidden" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="{Binding VM_Longitude, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" VerticalAlignment="Top" Width="120" TextChanged="t_TextChanged"/>
-        <TextBox x:Name="t2" Visibility="Hidden"  Text="{Binding VM_Latitude, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" VerticalAlignment="Top" Width="120" TextChanged="t_TextChanged"/>
-
-
     </Grid>
 </UserControl>
 

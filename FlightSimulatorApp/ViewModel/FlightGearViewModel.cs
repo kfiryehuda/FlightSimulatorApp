@@ -64,7 +64,7 @@ namespace FlightSimulatorApp.ViewModel
             set
             {
                 String val = value;
-                Console.WriteLine(status.Contains(value));
+                Console.WriteLine(status.Contains(value)+value);
                 if (!status.Contains(val) && statusCounter < 6 && statusCounter != 0)
                 {
                     statusCounter += 1;
@@ -72,7 +72,11 @@ namespace FlightSimulatorApp.ViewModel
                 }
                 else
                 {
-                    if (!status.Contains("Plain"))
+                    if (!value.Contains("Plain"))
+                    {
+                        status = val;
+                        statusCounter = 1;
+                    } else if(!status.Contains(val))
                     {
                         status = val;
                         statusCounter = 1;

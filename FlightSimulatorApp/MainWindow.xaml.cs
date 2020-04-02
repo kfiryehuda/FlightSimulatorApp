@@ -37,9 +37,6 @@ namespace FlightSimulatorApp
             map.DataContext = vm;
             disconnectButton.IsEnabled = false;
             connectWindow = new Connect();
-            string s = "kfir";
-
-            Console.WriteLine(s.Contains("k"));
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

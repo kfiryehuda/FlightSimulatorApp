@@ -344,6 +344,7 @@ namespace FlightSimulatorApp.Models
             {
                 if (!client.connect(ip, port))
                 {
+                    DisconnectedDueTOError = true;
                     return;
                 }
                 DisconnectedDueTOError = false;
