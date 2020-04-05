@@ -39,7 +39,7 @@
             </Controls:controller.RenderTransform>
         </Controls:controller>
 
-        <Controls:map x:Name="map" Margin="-401,32,36,18"   Grid.Row="6" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="5" Grid.ColumnSpan="2" >
+        <Controls:map x:Name="map" Margin="-402,59,37,58"   Grid.Row="5" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="6" Grid.ColumnSpan="2" >
 
             <Controls:map.RenderTransform>
                 <TransformGroup>

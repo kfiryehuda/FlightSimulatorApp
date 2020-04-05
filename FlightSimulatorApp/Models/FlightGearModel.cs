@@ -43,8 +43,10 @@ namespace FlightSimulatorApp.Models
             get { return ip; }
             set
             {
+
                 ip = value;
                 this.NotifyPropertyChanged("Ip");
+
             }
         }
         private String port;
@@ -53,8 +55,10 @@ namespace FlightSimulatorApp.Models
             get { return port; }
             set
             {
+
                 port = value;
                 this.NotifyPropertyChanged("Port");
+                
             }
         }
 
@@ -62,9 +66,13 @@ namespace FlightSimulatorApp.Models
         public double Rudder { 
             get { return rudder; } 
             set {
-                rudder = value;
-                client.writeAndRead("set /controls/flight/rudder " + rudder + "\n");
-                this.NotifyPropertyChanged("Rudder");
+                if (value != Double.MaxValue)
+                {
+
+                    rudder = value;
+                    client.writeAndRead("set /controls/flight/rudder " + rudder + "\n");
+                    this.NotifyPropertyChanged("Rudder");
+                }
             }
         }
 
@@ -75,12 +83,14 @@ namespace FlightSimulatorApp.Models
             get { return elevator; }
             set
             {
-                
-                elevator = value;
+                if (value != Double.MaxValue)
+                {
 
-                client.writeAndRead("set /controls/flight/elevator " + elevator + "\n");
-                this.NotifyPropertyChanged("Elevator");
-                
+                    elevator = value;
+
+                    client.writeAndRead("set /controls/flight/elevator " + elevator + "\n");
+                    this.NotifyPropertyChanged("Elevator");
+                }
             }
         }
         private double aileron;
@@ -89,13 +99,15 @@ namespace FlightSimulatorApp.Models
             get { return aileron; }
             set
             {
-                
-                aileron = value;
-                // TODO nead to change!
+                if (value != Double.MaxValue)
+                {
 
-                client.writeAndRead("set /controls/flight/aileron " + aileron + "\n");
-                this.NotifyPropertyChanged("Aileron");
-                
+                    aileron = value;
+                    // TODO nead to change!
+
+                    client.writeAndRead("set /controls/flight/aileron " + aileron + "\n");
+                    this.NotifyPropertyChanged("Aileron");
+                }
             }
         }
         private double throttle;
@@ -104,11 +116,13 @@ namespace FlightSimulatorApp.Models
             get { return throttle; }
             set
             {
-                
-                throttle = value;
+                if (value != Double.MaxValue)
+                {
+                    throttle = value;
 
-                client.writeAndRead("set /controls/engines/current-engine/throttle " + throttle + "\n");
-                this.NotifyPropertyChanged("Throttle");
+                    client.writeAndRead("set /controls/engines/current-engine/throttle " + throttle + "\n");
+                    this.NotifyPropertyChanged("Throttle");
+                }
                 
                 //Console.WriteLine("read" + client.read()) ;
             }
@@ -119,8 +133,11 @@ namespace FlightSimulatorApp.Models
             get { return longitude; }
             set
             {
-                longitude = value;
-                this.NotifyPropertyChanged("Longitude");
+                if (value != Double.MaxValue)
+                {
+                    longitude = value;
+                    this.NotifyPropertyChanged("Longitude");
+                }
                 //client.write("get /position/longitude-deg " + longitude + "\n");
 
                 //Console.WriteLine("read" + client.read()) ;
@@ -133,11 +150,12 @@ namespace FlightSimulatorApp.Models
             get { return latitude; }
             set
             {
-                latitude = value;
-                this.NotifyPropertyChanged("Latitude");
-                //client.write("get /position/latitude-deg " + latitude + "\n");
-
-                //Console.WriteLine("read" + client.read()) ;
+                if (value != Double.MaxValue)
+                {
+                    latitude = value;
+                    this.NotifyPropertyChanged("Latitude");
+                }
+                
             }
         }
 
@@ -164,8 +182,12 @@ namespace FlightSimulatorApp.Models
             get { return air_speed; }
             set
             {
-                air_speed = value;
-                this.NotifyPropertyChanged("Air_speed");
+                if (value != Double.MaxValue)
+                {
+
+                    air_speed = value;
+                    this.NotifyPropertyChanged("Air_speed");
+                }
             }
         }
 
@@ -175,8 +197,12 @@ namespace FlightSimulatorApp.Models
             get { return altitude; }
             set
             {
-                altitude = value;
-                this.NotifyPropertyChanged("Altitude");
+                if (value != Double.MaxValue)
+                {
+
+                    altitude = value;
+                    this.NotifyPropertyChanged("Altitude");
+                }
             }
         }
         private double roll;
@@ -185,8 +211,12 @@ namespace FlightSimulatorApp.Models
             get { return roll; }
             set
             {
-                roll = value;
-                this.NotifyPropertyChanged("Roll");
+                if (value != Double.MaxValue)
+                {
+
+                    roll = value;
+                    this.NotifyPropertyChanged("Roll");
+                }
             }
         }
 
@@ -196,8 +226,12 @@ namespace FlightSimulatorApp.Models
             get { return pitch; }
             set
             {
-                pitch = value;
-                this.NotifyPropertyChanged("Pitch");
+                if (value != Double.MaxValue)
+                {
+
+                    pitch = value;
+                    this.NotifyPropertyChanged("Pitch");
+                }
             }
         }
         private double altimeter;
@@ -206,8 +240,12 @@ namespace FlightSimulatorApp.Models
             get { return altimeter; }
             set
             {
-                altimeter = value;
-                this.NotifyPropertyChanged("Altimeter");
+                if (value != Double.MaxValue)
+                {
+
+                    altimeter = value;
+                    this.NotifyPropertyChanged("Altimeter");
+                }
             }
         }
 
@@ -217,8 +255,12 @@ namespace FlightSimulatorApp.Models
             get { return heading; }
             set
             {
-                heading = value;
-                this.NotifyPropertyChanged("Heading");
+                if (value != Double.MaxValue)
+                {
+
+                    heading = value;
+                    this.NotifyPropertyChanged("Heading");
+                }
             }
         }
         private double ground_speed;
@@ -227,8 +269,12 @@ namespace FlightSimulatorApp.Models
             get { return ground_speed; }
             set
             {
-                ground_speed = value;
-                this.NotifyPropertyChanged("Ground_speed");
+                if (value != Double.MaxValue)
+                {
+
+                    ground_speed = value;
+                    this.NotifyPropertyChanged("Ground_speed");
+                }
             }
         }
 
@@ -238,8 +284,12 @@ namespace FlightSimulatorApp.Models
             get { return vertical_speed; }
             set
             {
-                vertical_speed = value;
-                this.NotifyPropertyChanged("Vertical_speed");
+                if (value != Double.MaxValue)
+                {
+
+                    vertical_speed = value;
+                    this.NotifyPropertyChanged("Vertical_speed");
+                }
             }
         }
         
@@ -249,6 +299,7 @@ namespace FlightSimulatorApp.Models
             get { return location_str; }
             set
             {
+
                 location_str = value;
                 this.NotifyPropertyChanged("Location_str");
                 //client.write("get /position/latitude-deg " + latitude + "\n");
@@ -312,6 +363,12 @@ namespace FlightSimulatorApp.Models
                 Console.WriteLine("Server not responding more than 10 second, Disconnecting... ");
                 throw new Exception();
                 
+            }
+            else if (strToRet.Contains("ERR"))
+            {
+                Console.WriteLine("Error send from server");
+                // max value tells the value is problematic so dont use it
+                valToRet = Double.MaxValue;
             }
             else if (IsDouble(strToRet))
             {
