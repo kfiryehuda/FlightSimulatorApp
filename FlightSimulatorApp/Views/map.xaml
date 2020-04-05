@@ -9,15 +9,19 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" Width="546.252">
     <Grid>
-        <m:Map x:Name="myMap" CredentialsProvider="AiJ41kTcEGJJGy3gET2SKSlv0FdEZBYUTUW_xH_O-be-j2h1hAK9tSRv98v2teYl" Center="37.806029,-122.407007" ZoomLevel="1" Margin="0,-192,0.5,0" Height="642" VerticalAlignment="Bottom">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="295*"/>
+            <ColumnDefinition Width="251*"/>
+        </Grid.ColumnDefinitions>
+        <m:Map x:Name="myMap" CredentialsProvider="AiJ41kTcEGJJGy3gET2SKSlv0FdEZBYUTUW_xH_O-be-j2h1hAK9tSRv98v2teYl" Center="37.806029,-122.407007" ZoomLevel="1" Height="440" VerticalAlignment="Bottom" Grid.ColumnSpan="2">
             <Canvas x:Name="imageCanvas"  Width="30" Height="30"   m:MapLayer.Position="{Binding Path=VM_Location_str,UpdateSourceTrigger=PropertyChanged}" 
                     RenderOptions.BitmapScalingMode="NearestNeighbor"
-                    RenderOptions.EdgeMode="Aliased" Margin="258,0,258,306" VerticalAlignment="Bottom">
+                    RenderOptions.EdgeMode="Aliased"  VerticalAlignment="Bottom">
 
                 <Canvas.Background >
 
                     <ImageBrush x:Name="image1" ImageSource="airplane.png">
-                       
+
                     </ImageBrush>
 
 
@@ -26,7 +30,7 @@
                 <Canvas.RenderTransform>
                     <RotateTransform  Angle="{Binding VM_Heading, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" />
                 </Canvas.RenderTransform>
-                
+
             </Canvas>
 
         </m:Map>
