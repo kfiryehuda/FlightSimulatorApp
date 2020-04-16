@@ -46,6 +46,9 @@ namespace FlightSimulatorApp.Views
             }
             Knob.CaptureMouse();
         }
+        /// <summary>Handles the MouseMove event of the Knob control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseEventArgs" /> instance containing the event data.</param>
         private void Knob_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
@@ -62,6 +65,9 @@ namespace FlightSimulatorApp.Views
                 }
             }
         }
+        /// <summary>Handles the MouseUp event of the Knob control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseButtonEventArgs" /> instance containing the event data.</param>
         private void Knob_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Knob.ReleaseMouseCapture();

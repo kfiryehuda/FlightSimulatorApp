@@ -5,6 +5,10 @@ using System.Threading;
 
 namespace FlightSimulatorApp.Models
 {
+    /// <summary>
+    /// The model.
+    /// </summary>
+    /// <seealso cref="FlightSimulatorApp.Models.IFlightGearModel" />
     public class FlightGearModel : IFlightGearModel
     {
 
@@ -12,6 +16,10 @@ namespace FlightSimulatorApp.Models
         volatile Boolean stop;
         volatile Boolean disconnectedDueTOError;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FlightGearModel"/> class.
+        /// </summary>
+        /// <param name="client">The client.</param>
         public FlightGearModel(IClient client)
         {
             this.client = client;
@@ -20,12 +28,24 @@ namespace FlightSimulatorApp.Models
                 NotifyPropertyChanged(e.PropertyName);
             };
         }
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="FlightGearModel"/> is connected.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if connected; otherwise, <c>false</c>.
+        /// </value>
         public Boolean Connected
         {
             get { return client.Connected; }
             set { this.NotifyPropertyChanged("Connected"); }
         }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether [disconnected due to error].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [disconnected due to error]; otherwise, <c>false</c>.
+        /// </value>
         public Boolean DisconnectedDueTOError
         {
             get { return disconnectedDueTOError; }
@@ -36,6 +56,12 @@ namespace FlightSimulatorApp.Models
             }
         }
         private String ip;
+        /// <summary>
+        /// Gets or sets the ip.
+        /// </summary>
+        /// <value>
+        /// The ip.
+        /// </value>
         public String Ip
         {
             get { return ip; }
@@ -48,6 +74,12 @@ namespace FlightSimulatorApp.Models
             }
         }
         private String port;
+        /// <summary>
+        /// Gets or sets the port.
+        /// </summary>
+        /// <value>
+        /// The port.
+        /// </value>
         public String Port
         {
             get { return port; }
@@ -61,6 +93,12 @@ namespace FlightSimulatorApp.Models
         }
 
         private double rudder;
+        /// <summary>
+        /// Gets or sets the rudder.
+        /// </summary>
+        /// <value>
+        /// The rudder.
+        /// </value>
         public double Rudder
         {
             get { return rudder; }
@@ -76,8 +114,13 @@ namespace FlightSimulatorApp.Models
             }
         }
 
-
         private double elevator;
+        /// <summary>
+        /// Gets or sets the elevator.
+        /// </summary>
+        /// <value>
+        /// The elevator.
+        /// </value>
         public double Elevator
         {
             get { return elevator; }
@@ -94,6 +137,12 @@ namespace FlightSimulatorApp.Models
             }
         }
         private double aileron;
+        /// <summary>
+        /// Gets or sets the aileron.
+        /// </summary>
+        /// <value>
+        /// The aileron.
+        /// </value>
         public double Aileron
         {
             get { return aileron; }
@@ -111,6 +160,12 @@ namespace FlightSimulatorApp.Models
             }
         }
         private double throttle;
+        /// <summary>
+        /// Gets or sets the throttle.
+        /// </summary>
+        /// <value>
+        /// The throttle.
+        /// </value>
         public double Throttle
         {
             get { return throttle; }
@@ -128,6 +183,12 @@ namespace FlightSimulatorApp.Models
             }
         }
         private double longitude;
+        /// <summary>
+        /// Gets or sets the longitude.
+        /// </summary>
+        /// <value>
+        /// The longitude.
+        /// </value>
         public double Longitude
         {
             get { return longitude; }
@@ -145,6 +206,12 @@ namespace FlightSimulatorApp.Models
         }
 
         private double latitude;
+        /// <summary>
+        /// Gets or sets the latitude.
+        /// </summary>
+        /// <value>
+        /// The latitude.
+        /// </value>
         public double Latitude
         {
             get { return latitude; }
@@ -160,6 +227,12 @@ namespace FlightSimulatorApp.Models
         }
 
         private GeoCoordinate location;
+        /// <summary>
+        /// Gets or sets the location.
+        /// </summary>
+        /// <value>
+        /// The location.
+        /// </value>
         public GeoCoordinate Location
         {
             get { return location; }
@@ -172,6 +245,10 @@ namespace FlightSimulatorApp.Models
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// Notifies the property changed.
+        /// </summary>
+        /// <param name="propName">Name of the property.</param>
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
@@ -181,6 +258,12 @@ namespace FlightSimulatorApp.Models
         }
 
         private double air_speed;
+        /// <summary>
+        /// Gets or sets the air speed.
+        /// </summary>
+        /// <value>
+        /// The air speed.
+        /// </value>
         public double Air_speed
         {
             get { return air_speed; }
@@ -196,6 +279,12 @@ namespace FlightSimulatorApp.Models
         }
 
         private double altitude;
+        /// <summary>
+        /// Gets or sets the altitude.
+        /// </summary>
+        /// <value>
+        /// The altitude.
+        /// </value>
         public double Altitude
         {
             get { return altitude; }
@@ -210,6 +299,12 @@ namespace FlightSimulatorApp.Models
             }
         }
         private double roll;
+        /// <summary>
+        /// Gets or sets the roll.
+        /// </summary>
+        /// <value>
+        /// The roll.
+        /// </value>
         public double Roll
         {
             get { return roll; }
@@ -225,6 +320,12 @@ namespace FlightSimulatorApp.Models
         }
 
         private double pitch;
+        /// <summary>
+        /// Gets or sets the pitch.
+        /// </summary>
+        /// <value>
+        /// The pitch.
+        /// </value>
         public double Pitch
         {
             get { return pitch; }
@@ -239,6 +340,12 @@ namespace FlightSimulatorApp.Models
             }
         }
         private double altimeter;
+        /// <summary>
+        /// Gets or sets the altimeter.
+        /// </summary>
+        /// <value>
+        /// The altimeter.
+        /// </value>
         public double Altimeter
         {
             get { return altimeter; }
@@ -254,6 +361,12 @@ namespace FlightSimulatorApp.Models
         }
 
         private double heading;
+        /// <summary>
+        /// Gets or sets the heading.
+        /// </summary>
+        /// <value>
+        /// The heading.
+        /// </value>
         public double Heading
         {
             get { return heading; }
@@ -268,6 +381,12 @@ namespace FlightSimulatorApp.Models
             }
         }
         private double ground_speed;
+        /// <summary>
+        /// Gets or sets the ground speed.
+        /// </summary>
+        /// <value>
+        /// The ground speed.
+        /// </value>
         public double Ground_speed
         {
             get { return ground_speed; }
@@ -283,6 +402,12 @@ namespace FlightSimulatorApp.Models
         }
 
         private double vertical_speed;
+        /// <summary>
+        /// Gets or sets the vertical speed.
+        /// </summary>
+        /// <value>
+        /// The vertical speed.
+        /// </value>
         public double Vertical_speed
         {
             get { return vertical_speed; }
@@ -298,6 +423,12 @@ namespace FlightSimulatorApp.Models
         }
 
         private String location_str;
+        /// <summary>
+        /// Gets or sets the location string.
+        /// </summary>
+        /// <value>
+        /// The location string.
+        /// </value>
         public String Location_str
         {
             get { return location_str; }
@@ -312,15 +443,22 @@ namespace FlightSimulatorApp.Models
             }
         }
 
-
+        /// <summary>
+        /// Disconnects this instance.
+        /// </summary>
         public void disconnect()
         {
             stop = true;
             client.disconnect();
         }
 
-
-
+        /// <summary>
+        /// Switches the read write.
+        /// </summary>
+        /// <param name="caseSwitch">The case switch.</param>
+        /// <returns></returns>
+        /// <exception cref="Exception">
+        /// </exception>
         private Double switchReadWrite(int caseSwitch)
         {
             String strToRet = "";
@@ -384,21 +522,28 @@ namespace FlightSimulatorApp.Models
                 Console.WriteLine("Disconected to Error message from server");
                 throw new Exception();
             }
-
             return valToRet;
-
         }
 
+        /// <summary>
+        /// Determines whether the specified text is double.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <returns>
+        ///   <c>true</c> if the specified text is double; otherwise, <c>false</c>.
+        /// </returns>
         public bool IsDouble(string text)
         {
             Double num = 0;
             bool isDouble = false;
-
-
             isDouble = Double.TryParse(text, out num);
-
             return isDouble;
         }
+        /// <summary>
+        /// Starts the specified ip.
+        /// </summary>
+        /// <param name="ip">The ip.</param>
+        /// <param name="port">The port.</param>
         public void start(string ip, int port)
         {
             new Thread(delegate ()

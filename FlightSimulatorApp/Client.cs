@@ -6,9 +6,17 @@ using System.Text;
 namespace FlightSimulatorApp
 {
 
+    /// <summary>
+    /// Handle the connection to the server.
+    /// </summary>
+    /// <seealso cref="FlightSimulatorApp.IClient" />
     public class Client : IClient
     {
         public event PropertyChangedEventHandler PropertyChanged;
+        /// <summary>
+        /// Notifies the property changed.
+        /// </summary>
+        /// <param name="propName">Name of the property.</param>
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
@@ -16,12 +24,16 @@ namespace FlightSimulatorApp
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
-
-
         Object obj = new object();
         TcpClient tcpClient;
         NetworkStream netStream;
         private Boolean connected = false;
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="IClient" /> is connected.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if connected; otherwise, <c>false</c>.
+        /// </value>
         public Boolean Connected
         {
             get { return connected; }
@@ -31,10 +43,14 @@ namespace FlightSimulatorApp
                 this.NotifyPropertyChanged("Connected");
             }
         }
+        /// <summary>
+        /// Connects the specified ip.
+        /// </summary>
+        /// <param name="ip">The ip.</param>
+        /// <param name="port">The port.</param>
+        /// <returns></returns>
         public Boolean connect(string ip, int port)
         {
-
-
             try
             {
                 tcpClient = new TcpClient();
@@ -49,15 +65,16 @@ namespace FlightSimulatorApp
                 Connected = true;
                 return true;
             }
-
             catch (Exception e)
             {
-
                 Console.WriteLine("Error..... " + e.StackTrace);
                 return false;
             }
         }
 
+        /// <summary>
+        /// Disconnects this instance.
+        /// </summary>
         public void disconnect()
         {
             if (Connected)
@@ -73,6 +90,11 @@ namespace FlightSimulatorApp
             }
         }
 
+        /// <summary>
+        /// Writes the and read.
+        /// </summary>
+        /// <param name="command">The command.</param>
+        /// <returns></returns>
         public string writeAndRead(string command)
         {
             if (!Connected)
@@ -102,7 +124,6 @@ namespace FlightSimulatorApp
                         return returndata;
                     }
                 }
-
                 catch (Exception e)
                 {
                     return "";
@@ -118,6 +139,5 @@ namespace FlightSimulatorApp
                 return "";
             }
         }
-
     }
 }

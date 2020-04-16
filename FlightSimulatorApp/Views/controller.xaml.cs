@@ -9,18 +9,20 @@ namespace FlightSimulatorApp.Views
     /// </summary>
     public partial class controller : UserControl
     {
+        /// <summary>
+        /// Sets the view model.
+        /// </summary>
+        /// <param name="vm">The vm.</param>
         public void SetViewModel(FlightGearViewModel vm)
         {
             joy.SetViewModel(vm);
         }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="controller"/> class.
+        /// </summary>
         public controller()
         {
             InitializeComponent();
-        }
-
-        private void joy_Loaded(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

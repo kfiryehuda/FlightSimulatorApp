@@ -13,31 +13,46 @@ namespace FlightSimulatorApp
         private FlightGearViewModel vm;
         private Client client;
         private Connect connectWindow;
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainWindow"/> class.
+        /// </summary>
         public MainWindow()
         {
-
             InitializeComponent();
             client = new Client();
             vm = new FlightGearViewModel(new FlightGearModel(client));
             DataContext = vm;
             map.DataContext = vm;
             controller.SetViewModel(vm);
-
             disconnectButton.IsEnabled = false;
             connectWindow = new Connect();
         }
 
+        /// <summary>
+        /// Handles the Click event of the Connect Button control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             connectWindow.vm = vm;
             connectWindow.showW();
         }
 
+        /// <summary>
+        /// Handles the 1 event of the Disconnect Button_Click control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="RoutedEventArgs"/> instance containing the event data.</param>
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-
             vm.Stop();
         }
+        /// <summary>
+        /// Handles the TextChanged event of the serverStatus control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="TextChangedEventArgs"/> instance containing the event data.</param>
         private void serverStatus_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (serverStatus.Text == "True")
@@ -51,25 +66,5 @@ namespace FlightSimulatorApp
                 disconnectButton.IsEnabled = false;
             }
         }
-
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-            if (disconnectServerErrLbl.Text == "True")
-            {
-
-                //disconnectServerErr.Content = "Error from server disconnecting... Try Reconnecting";
-                //disconnectServerErr.Visibility = Visibility.Visible;
-                //vm.reconnect();
-            }
-            else
-            {
-                //disconnectServerErr.Visibility = Visibility.Hidden;
-            }
-
-        }
-        //Method to implement syncronization using Mutex  
-
-
     }
 }

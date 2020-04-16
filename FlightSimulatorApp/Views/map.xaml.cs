@@ -7,13 +7,9 @@ namespace FlightSimulatorApp.Views
     /// </summary>
     public partial class map : UserControl
     {
-
         public map()
         {
             InitializeComponent();
-
-
         }
-
     }
 }

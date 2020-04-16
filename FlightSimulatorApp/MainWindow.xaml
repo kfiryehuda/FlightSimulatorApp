@@ -55,7 +55,6 @@
         <TextBox x:Name="serverStatus" Visibility="Hidden" BorderThickness="0" Text="{Binding VM_Connected, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" TextChanged="serverStatus_TextChanged" Grid.ColumnSpan="2" Margin="0,0,91,0" Grid.RowSpan="2" />
 
         <Label x:Name="Status" BorderThickness="5" BorderBrush="AliceBlue" FontSize="14" HorizontalAlignment="Left" Height="138" Margin="-401,33.714,0,0" Grid.Row="2" Content="{Binding VM_Status, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" VerticalAlignment="Top" Width="549" Grid.ColumnSpan="2" Grid.RowSpan="4"/>
-        <TextBox x:Name="disconnectServerErrLbl" Visibility="Hidden"  Text="{Binding VM_DisconnectedDueTOError, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" TextChanged="TextBox_TextChanged" Grid.ColumnSpan="2" Margin="0,0,91,0" Grid.RowSpan="2"/>
         <Label Content="Welcome To Flightear Controller Desktop App!!" FontSize="17" HorizontalAlignment="Left" Margin="-401,9,0,0" VerticalAlignment="Top" Width="358" Grid.RowSpan="2"/>
         <Label Content="Messages:" HorizontalAlignment="Left" Margin="-401,3,0,0" VerticalAlignment="Top" Width="336" Grid.Row="2"/>
     </Grid>
