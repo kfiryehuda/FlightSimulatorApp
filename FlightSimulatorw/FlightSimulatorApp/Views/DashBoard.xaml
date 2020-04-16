@@ -1,0 +1,107 @@
+﻿<UserControl x:Class="FlightSimulatorApp.Views.DashBoard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FlightSimulatorApp.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="450">
+
+    <FlowDocumentScrollViewer>
+        <FlowDocument>
+            <Paragraph FontSize="15pt">Dash Bord</Paragraph>
+            <Table>
+                <TableRowGroup Paragraph.TextAlignment="left">
+                    <TableRow FontWeight="Bold" >
+                        <TableCell>
+                            <Paragraph>Name</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>Value</Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Air Speed</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_Air_speed, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Altitude</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_Altitude, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Roll</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_Roll, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Pitch</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_Pitch, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Altimeter</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_Altimeter, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Heading Degree</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_Heading, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Ground Speed</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_Ground_speed, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                    <TableRow>
+                        <TableCell>
+                            <Paragraph>Vertical Speed</Paragraph>
+                        </TableCell>
+                        <TableCell>
+                            <Paragraph>
+                                <Run Text="{Binding VM_Vertical_speed, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}"/>
+                            </Paragraph>
+                        </TableCell>
+                    </TableRow>
+                </TableRowGroup>
+            </Table>
+        </FlowDocument>
+    </FlowDocumentScrollViewer>
+</UserControl>

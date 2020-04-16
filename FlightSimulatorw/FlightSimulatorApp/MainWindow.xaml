@@ -1,0 +1,61 @@
+﻿<Window x:Name="main" x:Class="FlightSimulatorApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlightSimulatorApp"
+        mc:Ignorable="d"
+        xmlns:Controls="clr-namespace:FlightSimulatorApp.Views"
+        Title="MainWindow" Height="575.428" Width="990.607" Background="DarkGray">
+
+    <Grid Margin="414,0,-5,0.5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="89" />
+            <ColumnDefinition Width="91"/>
+            <ColumnDefinition Width="53"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24" />
+            <RowDefinition Height="26"/>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="50" />
+            <RowDefinition Height="67" />
+            <RowDefinition Height="0"/>
+            <RowDefinition Height="17*"/>
+            <RowDefinition Height="43*"/>
+            <RowDefinition Height="82*"/>
+            <RowDefinition Height="109*"/>
+        </Grid.RowDefinitions>
+        <Button Name="connectButton" Content="Connect" HorizontalAlignment="Left" Margin="-38,15,0,15" Width="74" Click="Button_Click" Grid.RowSpan="2"/>
+        <Controls:Controller x:Name="controller" Margin="13.286,37.429,-338.143,-86.143" Grid.Row="3" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="8" Grid.Column="1" Grid.ColumnSpan="2"  >
+            <Controls:Controller.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.096"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Controls:Controller.RenderTransform>
+        </Controls:Controller>
+
+        <Controls:Map x:Name="map" Margin="-398,29.143,32.143,15"   Grid.Row="5" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="6" Grid.ColumnSpan="2" >
+
+            <Controls:Map.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.096"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Controls:Map.RenderTransform>
+        </Controls:Map>
+        <Controls:DashBoard Margin="63.286,-10,-271.143,26.714" Grid.RowSpan="6" Grid.Column="1" Grid.ColumnSpan="2" />
+        <Button Name="disconnectButton" Content="Disconnect" HorizontalAlignment="Left" Margin="68,15,0,0" Width="75" Height="20" VerticalAlignment="Top" Click="Button_Click_1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+        <TextBox x:Name="serverStatus" Visibility="Hidden" BorderThickness="0" Text="{Binding VM_Connected, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" TextChanged="ServerStatus_TextChanged" Grid.ColumnSpan="2" Margin="0,0,91,0" Grid.RowSpan="2" />
+
+        <Label x:Name="Status" BorderThickness="5" BorderBrush="AliceBlue" FontSize="14" HorizontalAlignment="Left" Height="138" Margin="-401,33.714,0,0" Grid.Row="2" Content="{Binding VM_Status, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" VerticalAlignment="Top" Width="549" Grid.ColumnSpan="2" Grid.RowSpan="4"/>
+        <Label Content="Welcome To Flightear Controller Desktop App!!" FontSize="17" HorizontalAlignment="Left" Margin="-401,9,0,0" VerticalAlignment="Top" Width="358" Grid.RowSpan="2"/>
+        <Label Content="Messages:" HorizontalAlignment="Left" Margin="-401,3,0,0" VerticalAlignment="Top" Width="336" Grid.Row="2"/>
+    </Grid>
+</Window>
