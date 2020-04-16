@@ -1,21 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FlightSimulatorApp.Models;
+using FlightSimulatorApp.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Windows.Forms;
-using FlightSimulatorApp.Models;
-using FlightSimulatorApp.ViewModel;
-using System.Threading;
 
 namespace FlightSimulatorApp
 {
@@ -24,17 +10,19 @@ namespace FlightSimulatorApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private IFlightGearViewModel vm;
+        private FlightGearViewModel vm;
         private Client client;
         private Connect connectWindow;
         public MainWindow()
         {
-           
+
             InitializeComponent();
             client = new Client();
             vm = new FlightGearViewModel(new FlightGearModel(client));
             DataContext = vm;
             map.DataContext = vm;
+            controller.SetViewModel(vm);
+
             disconnectButton.IsEnabled = false;
             connectWindow = new Connect();
         }
@@ -52,7 +40,7 @@ namespace FlightSimulatorApp
         }
         private void serverStatus_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if(serverStatus.Text == "True")
+            if (serverStatus.Text == "True")
             {
                 connectButton.IsEnabled = false;
                 disconnectButton.IsEnabled = true;
@@ -66,7 +54,7 @@ namespace FlightSimulatorApp
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
             if (disconnectServerErrLbl.Text == "True")
             {
 
@@ -78,7 +66,7 @@ namespace FlightSimulatorApp
             {
                 //disconnectServerErr.Visibility = Visibility.Hidden;
             }
-            
+
         }
         //Method to implement syncronization using Mutex  
 

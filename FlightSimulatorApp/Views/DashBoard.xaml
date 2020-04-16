@@ -9,7 +9,7 @@
 
     <FlowDocumentScrollViewer>
         <FlowDocument>
-            <Paragraph FontSize="18pt">Dash Bord</Paragraph>
+            <Paragraph FontSize="15pt">Dash Bord</Paragraph>
             <Table>
                 <TableRowGroup Paragraph.TextAlignment="left">
                     <TableRow FontWeight="Bold" >

@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FlightSimulatorApp.ViewModel;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FlightSimulatorApp.Views
 {
@@ -21,48 +12,61 @@ namespace FlightSimulatorApp.Views
     /// </summary>
     public partial class joistick : UserControl
     {
+        private FlightGearViewModel vm;
+        /// <summary>Initializes a new instance of the <see cref="joistick" /> class.</summary>
         public joistick()
         {
             InitializeComponent();
         }
-        private void centerKnob_Completed(object sender, EventArgs e) { }
+        /// <summary>Sets the view model.</summary>
+        /// <param name="vm">The veiew model.</param>
+        public void SetViewModel(FlightGearViewModel vm)
+        {
+            this.vm = vm;
+        }
+        /// <summary>Handles the Completed event of the CenterKnob control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
+        private void CenterKnob_Completed(object sender, EventArgs e)
+        {
+            Storyboard sb = (Storyboard)Knob.FindResource("CenterKnob");
+            sb.Stop();
+            knobPosition.X = 0;
+            knobPosition.Y = 0;
+        }
         private Point firstPoint = new Point();
+        /// <summary>Handles the MouseDown event of the Knob control.</summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="MouseButtonEventArgs" /> instance containing the event data.</param>
         private void Knob_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            if (e.ChangedButton == MouseButton.Left) {
-                Knob.CaptureMouse();
-                firstPoint = e.GetPosition(this); 
+            if (e.ChangedButton == MouseButton.Left)
+            {
+                firstPoint = e.GetPosition(Base);
             }
+            Knob.CaptureMouse();
         }
-
         private void Knob_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                double x = e.GetPosition(this).X - firstPoint.X;
-                double y = e.GetPosition(this).Y - firstPoint.Y;
-                if (Math.Sqrt(x*x + y*y) < Base.Width / 2)
+                double x = e.GetPosition(Base).X - firstPoint.X;
+                double y = e.GetPosition(Base).Y - firstPoint.Y;
+                if (Math.Sqrt(x * x + y * y) < Base.Width / 2)
                 {
                     knobPosition.X = x;
                     knobPosition.Y = y;
-                }
-                
-                
+                    vm.VM_Rudder = x;
+                    vm.VM_Elevator = y;
 
+                }
             }
         }
-
         private void Knob_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            Storyboard sb = (Storyboard)Knob.FindResource("centerKnob");
-            //sb.Begin();
-            knobPosition.X = 0;
-            knobPosition.Y = 0;
             Knob.ReleaseMouseCapture();
-        }
-
-        private void Knob_MouseLeave(object sender, MouseEventArgs e)
-        {
+            Storyboard sb = (Storyboard)Knob.FindResource("CenterKnob");
+            sb.Begin();
         }
     }
 }

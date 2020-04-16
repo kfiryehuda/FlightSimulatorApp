@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-using System.Net;
-using System.Net.Sockets;
-
-using System.IO;
 using System.ComponentModel;
+using System.Net.Sockets;
+using System.Text;
 
 namespace FlightSimulatorApp
 {
@@ -45,7 +37,7 @@ namespace FlightSimulatorApp
 
             try
             {
-                tcpClient  = new TcpClient();
+                tcpClient = new TcpClient();
                 Console.WriteLine("Connecting.....");
 
                 tcpClient.Connect(ip, port);
@@ -60,7 +52,7 @@ namespace FlightSimulatorApp
 
             catch (Exception e)
             {
-                
+
                 Console.WriteLine("Error..... " + e.StackTrace);
                 return false;
             }
@@ -74,7 +66,7 @@ namespace FlightSimulatorApp
                 tcpClient.Close();
                 Connected = false;
             }
-            else 
+            else
             {
                 Console.WriteLine("Not connected ");
                 return;
@@ -83,15 +75,15 @@ namespace FlightSimulatorApp
 
         public string writeAndRead(string command)
         {
-           if (!Connected)
-           {
-               return "";
-           }
-           if (netStream.CanRead && netStream.CanWrite)
+            if (!Connected)
+            {
+                return "";
+            }
+            if (netStream.CanRead && netStream.CanWrite)
             {
                 try
                 {
-                        lock (obj)
+                    lock (obj)
                     {
 
                         Byte[] sendBytes = Encoding.ASCII.GetBytes(command);

@@ -1,13 +1,8 @@
 ﻿using FlightSimulatorApp.Models;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Device.Location;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.ViewModel
 {
@@ -21,7 +16,6 @@ namespace FlightSimulatorApp.ViewModel
             model.PropertyChanged += delegate (Object sender, PropertyChangedEventArgs e)
              {
                  NotifyPropertyChanged("VM_" + e.PropertyName);
-                 
              };
         }
 
@@ -35,6 +29,7 @@ namespace FlightSimulatorApp.ViewModel
 
         public void Start(string ip, int port)
         {
+            VM_Status = "Connecting...";
             cacheIp = ip;
             cachePort = port;
             model.start(ip, port);
@@ -46,7 +41,7 @@ namespace FlightSimulatorApp.ViewModel
         }
         public void reconnect()
         {
-            
+
             new Thread(delegate ()
             {
                 Thread.Sleep(8000);
@@ -56,7 +51,7 @@ namespace FlightSimulatorApp.ViewModel
                 }
             }).Start();
         }
-        private int statusCounter=0;
+        private int statusCounter = 0;
         private String status = "";
         public String VM_Status
         {
@@ -64,7 +59,7 @@ namespace FlightSimulatorApp.ViewModel
             set
             {
                 String val = value;
-                Console.WriteLine(status.Contains(value)+value);
+                Console.WriteLine(status.Contains(value) + value);
                 if (!status.Contains(val) && statusCounter < 6 && statusCounter != 0)
                 {
                     statusCounter += 1;
@@ -76,13 +71,14 @@ namespace FlightSimulatorApp.ViewModel
                     {
                         status = val;
                         statusCounter = 1;
-                    } else if(!status.Contains(val))
+                    }
+                    else if (!status.Contains(val))
                     {
                         status = val;
                         statusCounter = 1;
                     }
                 }
-                NotifyPropertyChanged("VM_Status"); 
+                NotifyPropertyChanged("VM_Status");
             }
         }
         public String VM_Port
@@ -105,15 +101,15 @@ namespace FlightSimulatorApp.ViewModel
         private double rudder, elevator, aileron, throttle;
         public double VM_Rudder
         {
-            get { return Convert.ToDouble(Convert.ToInt32(rudder * 100))/100; }
-            set { rudder = value / 170; model.Rudder = value/170; }
-            
+            get { return Convert.ToDouble(Convert.ToInt32(rudder * 100)) / 100; }
+            set { rudder = value / 170; model.Rudder = value / 170; }
+
         }
         public double VM_Elevator
         {
             get { return Convert.ToDouble(Convert.ToInt32(elevator * 100)) / 100; }
             set { elevator = value / 170; model.Elevator = value / 170; }
-            
+
         }
         public double VM_Aileron
         {
@@ -127,23 +123,26 @@ namespace FlightSimulatorApp.ViewModel
         }
         public double VM_Longitude
         {
-            get {
+            get
+            {
                 if (model.Longitude > 180)
                 {
                     VM_Status = "Plain is out of the map!";
                     return 180;
-                    
+
                 }
                 else if (model.Longitude < -180)
                 {
                     VM_Status = "Plain is out of the map!";
                     return -180;
                 }
-                return Convert.ToDouble(Convert.ToInt32(model.Longitude * 100)) / 100; }
-       }
+                return Convert.ToDouble(Convert.ToInt32(model.Longitude * 100)) / 100;
+            }
+        }
         public double VM_Latitude
         {
-            get {
+            get
+            {
                 if (model.Longitude > 90)
                 {
                     VM_Status = "Plain is out of the map!";
@@ -154,7 +153,8 @@ namespace FlightSimulatorApp.ViewModel
                     VM_Status = "Plain is out of the map!";
                     return -90;
                 }
-                return Convert.ToDouble(Convert.ToInt32(model.Latitude * 100)) / 100;}
+                return Convert.ToDouble(Convert.ToInt32(model.Latitude * 100)) / 100;
+            }
         }
         public GeoCoordinate VM_Location
         {
@@ -169,7 +169,7 @@ namespace FlightSimulatorApp.ViewModel
 
         public double VM_Air_speed
         {
-            get { return Convert.ToDouble(Convert.ToInt32(model.Air_speed *100))/100; }
+            get { return Convert.ToDouble(Convert.ToInt32(model.Air_speed * 100)) / 100; }
 
         }
 
@@ -182,7 +182,7 @@ namespace FlightSimulatorApp.ViewModel
 
         public double VM_Roll
         {
-            get { return Convert.ToDouble(Convert.ToInt32(model.Roll * 100))/ 100; }
+            get { return Convert.ToDouble(Convert.ToInt32(model.Roll * 100)) / 100; }
 
         }
 
@@ -203,14 +203,14 @@ namespace FlightSimulatorApp.ViewModel
 
         public double VM_Heading
         {
-            get { return Convert.ToDouble(Convert.ToInt32(model.Heading * 100)) / 100 ; }
+            get { return Convert.ToDouble(Convert.ToInt32(model.Heading * 100)) / 100; }
 
         }
 
 
         public double VM_Ground_speed
         {
-            get { return Convert.ToDouble(Convert.ToInt32(model.Ground_speed * 100)) / 100 ; }
+            get { return Convert.ToDouble(Convert.ToInt32(model.Ground_speed * 100)) / 100; }
 
         }
 
@@ -222,7 +222,8 @@ namespace FlightSimulatorApp.ViewModel
         }
         public Boolean VM_Connected
         {
-            get {
+            get
+            {
                 if (model.Connected)
                 {
                     VM_Status = "Connected To FlightGear!";
@@ -231,13 +232,13 @@ namespace FlightSimulatorApp.ViewModel
                 {
                     //VM_Status = "Disonnected";
                 }
-                return model.Connected; 
+                return model.Connected;
             }
         }
 
         public Boolean VM_DisconnectedDueTOError
         {
-            get 
+            get
             {
                 if (model.DisconnectedDueTOError)
                 {

@@ -1,19 +1,8 @@
 ﻿
 using FlightSimulatorApp.ViewModel;
 using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace FlightSimulatorApp
 {
@@ -32,7 +21,7 @@ namespace FlightSimulatorApp
         public IFlightGearViewModel vm;
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            vm.Start(ip.Text, Convert.ToInt32(port.Text));            
+            vm.Start(ip.Text, Convert.ToInt32(port.Text));
             this.Hide();
         }
         public void showW()
@@ -40,7 +29,6 @@ namespace FlightSimulatorApp
             this.Show();
             isFocus = true;
         }
-
         private void ConnectWindow_LostFocus(object sender, RoutedEventArgs e)
         {
             isFocus = false;

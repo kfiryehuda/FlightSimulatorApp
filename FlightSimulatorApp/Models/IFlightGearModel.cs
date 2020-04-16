@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Device.Location;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.Models
 {
@@ -37,7 +32,7 @@ namespace FlightSimulatorApp.Models
         double Ground_speed { get; set; }
         double Vertical_speed { get; set; }
         String Location_str { set; get; }
-        Boolean Connected { get;  }
+        Boolean Connected { get; }
         Boolean DisconnectedDueTOError { get; }
 
 

@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FlightSimulatorApp.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace FlightSimulatorApp.Views
 {
@@ -20,6 +9,10 @@ namespace FlightSimulatorApp.Views
     /// </summary>
     public partial class controller : UserControl
     {
+        public void SetViewModel(FlightGearViewModel vm)
+        {
+            joy.SetViewModel(vm);
+        }
         public controller()
         {
             InitializeComponent();

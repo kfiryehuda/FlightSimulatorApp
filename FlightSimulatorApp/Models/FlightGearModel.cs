@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Device.Location;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.Models
 {
@@ -33,9 +29,11 @@ namespace FlightSimulatorApp.Models
         public Boolean DisconnectedDueTOError
         {
             get { return disconnectedDueTOError; }
-            set {
+            set
+            {
                 disconnectedDueTOError = value;
-                this.NotifyPropertyChanged("DisconnectedDueTOError"); }
+                this.NotifyPropertyChanged("DisconnectedDueTOError");
+            }
         }
         private String ip;
         public String Ip
@@ -58,14 +56,16 @@ namespace FlightSimulatorApp.Models
 
                 port = value;
                 this.NotifyPropertyChanged("Port");
-                
+
             }
         }
 
         private double rudder;
-        public double Rudder { 
-            get { return rudder; } 
-            set {
+        public double Rudder
+        {
+            get { return rudder; }
+            set
+            {
                 if (value != Double.MaxValue)
                 {
 
@@ -123,7 +123,7 @@ namespace FlightSimulatorApp.Models
                     client.writeAndRead("set /controls/engines/current-engine/throttle " + throttle + "\n");
                     this.NotifyPropertyChanged("Throttle");
                 }
-                
+
                 //Console.WriteLine("read" + client.read()) ;
             }
         }
@@ -155,16 +155,20 @@ namespace FlightSimulatorApp.Models
                     latitude = value;
                     this.NotifyPropertyChanged("Latitude");
                 }
-                
+
             }
         }
 
         private GeoCoordinate location;
-        public GeoCoordinate Location { 
+        public GeoCoordinate Location
+        {
             get { return location; }
 
-            set { location = value;
-                this.NotifyPropertyChanged("Location");}
+            set
+            {
+                location = value;
+                this.NotifyPropertyChanged("Location");
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -292,7 +296,7 @@ namespace FlightSimulatorApp.Models
                 }
             }
         }
-        
+
         private String location_str;
         public String Location_str
         {
@@ -315,7 +319,7 @@ namespace FlightSimulatorApp.Models
             client.disconnect();
         }
 
-        
+
 
         private Double switchReadWrite(int caseSwitch)
         {
@@ -362,7 +366,7 @@ namespace FlightSimulatorApp.Models
             {
                 Console.WriteLine("Server not responding more than 10 second, Disconnecting... ");
                 throw new Exception();
-                
+
             }
             else if (strToRet.Contains("ERR"))
             {
@@ -380,7 +384,7 @@ namespace FlightSimulatorApp.Models
                 Console.WriteLine("Disconected to Error message from server");
                 throw new Exception();
             }
-               
+
             return valToRet;
 
         }
@@ -390,7 +394,7 @@ namespace FlightSimulatorApp.Models
             Double num = 0;
             bool isDouble = false;
 
-            
+
             isDouble = Double.TryParse(text, out num);
 
             return isDouble;
