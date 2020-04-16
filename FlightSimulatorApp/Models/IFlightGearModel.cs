@@ -14,13 +14,13 @@ namespace FlightSimulatorApp.Models
         /// <summary>
         /// Disconnects this instance.
         /// </summary>
-        void disconnect();
+        void Disconnect();
         /// <summary>
         /// Starts the specified ip.
         /// </summary>
         /// <param name="ip">The ip.</param>
         /// <param name="port">The port.</param>
-        void start(string ip, int port);
+        void Start(string ip, int port);
         /// <summary>
         /// Gets or sets the ip.
         /// </summary>

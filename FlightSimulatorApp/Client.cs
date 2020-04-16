@@ -21,10 +21,10 @@ namespace FlightSimulatorApp
         {
             if (this.PropertyChanged != null)
             {
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
-        Object obj = new object();
+        readonly Object obj = new object();
         TcpClient tcpClient;
         NetworkStream netStream;
         private Boolean connected = false;
@@ -49,7 +49,7 @@ namespace FlightSimulatorApp
         /// <param name="ip">The ip.</param>
         /// <param name="port">The port.</param>
         /// <returns></returns>
-        public Boolean connect(string ip, int port)
+        public Boolean Connect(string ip, int port)
         {
             try
             {
@@ -75,7 +75,7 @@ namespace FlightSimulatorApp
         /// <summary>
         /// Disconnects this instance.
         /// </summary>
-        public void disconnect()
+        public void Disconnect()
         {
             if (Connected)
             {
@@ -95,7 +95,7 @@ namespace FlightSimulatorApp
         /// </summary>
         /// <param name="command">The command.</param>
         /// <returns></returns>
-        public string writeAndRead(string command)
+        public string WriteAndRead(string command)
         {
             if (!Connected)
             {
@@ -124,7 +124,7 @@ namespace FlightSimulatorApp
                         return returndata;
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                     return "";
                 }

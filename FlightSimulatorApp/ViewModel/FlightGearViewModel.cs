@@ -12,7 +12,7 @@ namespace FlightSimulatorApp.ViewModel
     /// <seealso cref="FlightSimulatorApp.ViewModel.IFlightGearViewModel" />
     public class FlightGearViewModel : IFlightGearViewModel
     {
-        private IFlightGearModel model;
+        private readonly IFlightGearModel model;
         public event PropertyChangedEventHandler PropertyChanged;
         /// <summary>
         /// Initializes a new instance of the <see cref="FlightGearViewModel"/> class.
@@ -34,7 +34,7 @@ namespace FlightSimulatorApp.ViewModel
         public void NotifyPropertyChanged(string propName)
         {
             if (this.PropertyChanged != null)
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
         private string cacheIp;
         private int cachePort;
@@ -49,20 +49,20 @@ namespace FlightSimulatorApp.ViewModel
             VM_Status = "Connecting...";
             cacheIp = ip;
             cachePort = port;
-            model.start(ip, port);
+            model.Start(ip, port);
         }
         /// <summary>
         /// Stops this instance.
         /// </summary>
         public void Stop()
         {
-            model.disconnect();
+            model.Disconnect();
             VM_Status = "Disconnected";
         }
         /// <summary>
         /// Reconnects this instance.
         /// </summary>
-        public void reconnect()
+        public void Reconnect()
         {
 
             new Thread(delegate ()

@@ -21,7 +21,7 @@ namespace FlightSimulatorApp.ViewModel
         /// <summary>
         /// Reconnects this instance.
         /// </summary>
-        void reconnect();
+        void Reconnect();
     }
 
 }

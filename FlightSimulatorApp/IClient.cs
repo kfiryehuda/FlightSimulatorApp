@@ -15,13 +15,13 @@ namespace FlightSimulatorApp
         /// <param name="ip">The ip.</param>
         /// <param name="port">The port.</param>
         /// <returns></returns>
-        Boolean connect(string ip, int port);
+        bool Connect(string ip, int port);
         /// <summary>
         /// Writes the and read.
         /// </summary>
         /// <param name="command">The command.</param>
         /// <returns></returns>
-        string writeAndRead(string command);
+        string WriteAndRead(string command);
         /// <summary>
         /// Gets or sets a value indicating whether this <see cref="IClient"/> is connected.
         /// </summary>
@@ -32,6 +32,6 @@ namespace FlightSimulatorApp
         /// <summary>
         /// Disconnects this instance.
         /// </summary>
-        void disconnect();
+        void Disconnect();
     }
 }

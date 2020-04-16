@@ -10,11 +10,11 @@ namespace FlightSimulatorApp.Views
     /// <summary>
     /// Interaction logic for joistick.xaml
     /// </summary>
-    public partial class joistick : UserControl
+    public partial class Joistick : UserControl
     {
         private FlightGearViewModel vm;
-        /// <summary>Initializes a new instance of the <see cref="joistick" /> class.</summary>
-        public joistick()
+        /// <summary>Initializes a new instance of the <see cref="Joistick" /> class.</summary>
+        public Joistick()
         {
             InitializeComponent();
         }

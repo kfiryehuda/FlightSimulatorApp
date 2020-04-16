@@ -37,7 +37,7 @@ namespace FlightSimulatorApp
         /// <summary>
         /// Shows the window.
         /// </summary>
-        public void showW()
+        public void ShowW()
         {
             this.Show();
             isFocus = true;

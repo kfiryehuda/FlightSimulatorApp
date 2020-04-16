@@ -7,7 +7,7 @@ namespace FlightSimulatorApp.Views
     /// <summary>
     /// Interaction logic for controller.xaml
     /// </summary>
-    public partial class controller : UserControl
+    public partial class Controller : UserControl
     {
         /// <summary>
         /// Sets the view model.
@@ -18,9 +18,9 @@ namespace FlightSimulatorApp.Views
             joy.SetViewModel(vm);
         }
         /// <summary>
-        /// Initializes a new instance of the <see cref="controller"/> class.
+        /// Initializes a new instance of the <see cref="Controller"/> class.
         /// </summary>
-        public controller()
+        public Controller()
         {
             InitializeComponent();
         }

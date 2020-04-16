@@ -10,9 +10,9 @@ namespace FlightSimulatorApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private FlightGearViewModel vm;
-        private Client client;
-        private Connect connectWindow;
+        private readonly FlightGearViewModel vm;
+        private readonly Client client;
+        private readonly Connect connectWindow;
         /// <summary>
         /// Initializes a new instance of the <see cref="MainWindow"/> class.
         /// </summary>
@@ -36,7 +36,7 @@ namespace FlightSimulatorApp
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             connectWindow.vm = vm;
-            connectWindow.showW();
+            connectWindow.ShowW();
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace FlightSimulatorApp
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="TextChangedEventArgs"/> instance containing the event data.</param>
-        private void serverStatus_TextChanged(object sender, TextChangedEventArgs e)
+        private void ServerStatus_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (serverStatus.Text == "True")
             {

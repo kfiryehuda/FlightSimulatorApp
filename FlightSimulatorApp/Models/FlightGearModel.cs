@@ -12,7 +12,7 @@ namespace FlightSimulatorApp.Models
     public class FlightGearModel : IFlightGearModel
     {
 
-        private IClient client;
+        private readonly IClient client;
         volatile Boolean stop;
         volatile Boolean disconnectedDueTOError;
 
@@ -108,7 +108,7 @@ namespace FlightSimulatorApp.Models
                 {
 
                     rudder = value;
-                    client.writeAndRead("set /controls/flight/rudder " + rudder + "\n");
+                    client.WriteAndRead("set /controls/flight/rudder " + rudder + "\n");
                     this.NotifyPropertyChanged("Rudder");
                 }
             }
@@ -131,7 +131,7 @@ namespace FlightSimulatorApp.Models
 
                     elevator = value;
 
-                    client.writeAndRead("set /controls/flight/elevator " + elevator + "\n");
+                    client.WriteAndRead("set /controls/flight/elevator " + elevator + "\n");
                     this.NotifyPropertyChanged("Elevator");
                 }
             }
@@ -154,7 +154,7 @@ namespace FlightSimulatorApp.Models
                     aileron = value;
                     // TODO nead to change!
 
-                    client.writeAndRead("set /controls/flight/aileron " + aileron + "\n");
+                    client.WriteAndRead("set /controls/flight/aileron " + aileron + "\n");
                     this.NotifyPropertyChanged("Aileron");
                 }
             }
@@ -175,7 +175,7 @@ namespace FlightSimulatorApp.Models
                 {
                     throttle = value;
 
-                    client.writeAndRead("set /controls/engines/current-engine/throttle " + throttle + "\n");
+                    client.WriteAndRead("set /controls/engines/current-engine/throttle " + throttle + "\n");
                     this.NotifyPropertyChanged("Throttle");
                 }
 
@@ -253,7 +253,7 @@ namespace FlightSimulatorApp.Models
         {
             if (this.PropertyChanged != null)
             {
-                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+                PropertyChanged(this, new PropertyChangedEventArgs(propName));
             }
         }
 
@@ -446,10 +446,10 @@ namespace FlightSimulatorApp.Models
         /// <summary>
         /// Disconnects this instance.
         /// </summary>
-        public void disconnect()
+        public void Disconnect()
         {
             stop = true;
-            client.disconnect();
+            client.Disconnect();
         }
 
         /// <summary>
@@ -459,41 +459,41 @@ namespace FlightSimulatorApp.Models
         /// <returns></returns>
         /// <exception cref="Exception">
         /// </exception>
-        private Double switchReadWrite(int caseSwitch)
+        private Double SwitchReadWrite(int caseSwitch)
         {
             String strToRet = "";
             Double valToRet;
             switch (caseSwitch)
             {
                 case 1:
-                    strToRet = client.writeAndRead("get /position/latitude-deg\n");
+                    strToRet = client.WriteAndRead("get /position/latitude-deg\n");
                     break;
                 case 2:
-                    strToRet = client.writeAndRead("get /position/longitude-deg\n");
+                    strToRet = client.WriteAndRead("get /position/longitude-deg\n");
                     break;
                 case 3:
-                    strToRet = client.writeAndRead("get /instrumentation/airspeed-indicator/indicated-speed-kt\n");
+                    strToRet = client.WriteAndRead("get /instrumentation/airspeed-indicator/indicated-speed-kt\n");
                     break;
                 case 4:
-                    strToRet = client.writeAndRead("get /instrumentation/gps/indicated-altitude-ft\n");
+                    strToRet = client.WriteAndRead("get /instrumentation/gps/indicated-altitude-ft\n");
                     break;
                 case 5:
-                    strToRet = client.writeAndRead("get /instrumentation/attitude-indicator/internal-roll-deg\n");
+                    strToRet = client.WriteAndRead("get /instrumentation/attitude-indicator/internal-roll-deg\n");
                     break;
                 case 6:
-                    strToRet = client.writeAndRead("get /instrumentation/attitude-indicator/internal-pitch-deg\n");
+                    strToRet = client.WriteAndRead("get /instrumentation/attitude-indicator/internal-pitch-deg\n");
                     break;
                 case 7:
-                    strToRet = client.writeAndRead("get /instrumentation/altimeter/indicated-altitude-ft\n");
+                    strToRet = client.WriteAndRead("get /instrumentation/altimeter/indicated-altitude-ft\n");
                     break;
                 case 8:
-                    strToRet = client.writeAndRead("get /instrumentation/heading-indicator/indicated-heading-deg\n");
+                    strToRet = client.WriteAndRead("get /instrumentation/heading-indicator/indicated-heading-deg\n");
                     break;
                 case 9:
-                    strToRet = client.writeAndRead("get /instrumentation/gps/indicated-ground-speed-kt\n");
+                    strToRet = client.WriteAndRead("get /instrumentation/gps/indicated-ground-speed-kt\n");
                     break;
                 case 10:
-                    strToRet = client.writeAndRead("get /instrumentation/gps/indicated-vertical-speed\n");
+                    strToRet = client.WriteAndRead("get /instrumentation/gps/indicated-vertical-speed\n");
                     break;
                 default:
                     Console.WriteLine("Default case");
@@ -534,9 +534,7 @@ namespace FlightSimulatorApp.Models
         /// </returns>
         public bool IsDouble(string text)
         {
-            Double num = 0;
-            bool isDouble = false;
-            isDouble = Double.TryParse(text, out num);
+            bool isDouble = Double.TryParse(text, out _);
             return isDouble;
         }
         /// <summary>
@@ -544,11 +542,11 @@ namespace FlightSimulatorApp.Models
         /// </summary>
         /// <param name="ip">The ip.</param>
         /// <param name="port">The port.</param>
-        public void start(string ip, int port)
+        public void Start(string ip, int port)
         {
             new Thread(delegate ()
             {
-                if (!client.connect(ip, port))
+                if (!client.Connect(ip, port))
                 {
                     DisconnectedDueTOError = true;
                     return;
@@ -561,21 +559,21 @@ namespace FlightSimulatorApp.Models
                 {
                     try
                     {
-                        this.Latitude = switchReadWrite(1);
-                        this.Longitude = switchReadWrite(2);
-                        this.Air_speed = switchReadWrite(3);
-                        this.Altitude = switchReadWrite(4);
-                        this.Roll = switchReadWrite(5);
-                        this.Pitch = switchReadWrite(6);
-                        this.Altimeter = switchReadWrite(7);
-                        this.Heading = switchReadWrite(8);
-                        this.Ground_speed = switchReadWrite(9);
-                        this.Vertical_speed = switchReadWrite(10);
+                        this.Latitude = SwitchReadWrite(1);
+                        this.Longitude = SwitchReadWrite(2);
+                        this.Air_speed = SwitchReadWrite(3);
+                        this.Altitude = SwitchReadWrite(4);
+                        this.Roll = SwitchReadWrite(5);
+                        this.Pitch = SwitchReadWrite(6);
+                        this.Altimeter = SwitchReadWrite(7);
+                        this.Heading = SwitchReadWrite(8);
+                        this.Ground_speed = SwitchReadWrite(9);
+                        this.Vertical_speed = SwitchReadWrite(10);
                     }
 
-                    catch (Exception e)
+                    catch (Exception)
                     {
-                        disconnect();
+                        Disconnect();
                         DisconnectedDueTOError = true;
                     }
                     this.Location_str = Convert.ToString(latitude + "," + longitude);

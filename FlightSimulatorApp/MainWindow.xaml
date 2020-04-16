@@ -28,31 +28,31 @@
             <RowDefinition Height="109*"/>
         </Grid.RowDefinitions>
         <Button Name="connectButton" Content="Connect" HorizontalAlignment="Left" Margin="-38,15,0,15" Width="74" Click="Button_Click" Grid.RowSpan="2"/>
-        <Controls:controller x:Name="controller" Margin="13.286,37.429,-338.143,-86.143" Grid.Row="3" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="8" Grid.Column="1" Grid.ColumnSpan="2"  >
-            <Controls:controller.RenderTransform>
+        <Controls:Controller x:Name="controller" Margin="13.286,37.429,-338.143,-86.143" Grid.Row="3" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="8" Grid.Column="1" Grid.ColumnSpan="2"  >
+            <Controls:Controller.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform Angle="-0.096"/>
                     <TranslateTransform/>
                 </TransformGroup>
-            </Controls:controller.RenderTransform>
-        </Controls:controller>
+            </Controls:Controller.RenderTransform>
+        </Controls:Controller>
 
-        <Controls:map x:Name="map" Margin="-398,29.143,32.143,15"   Grid.Row="5" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="6" Grid.ColumnSpan="2" >
+        <Controls:Map x:Name="map" Margin="-398,29.143,32.143,15"   Grid.Row="5" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="6" Grid.ColumnSpan="2" >
 
-            <Controls:map.RenderTransform>
+            <Controls:Map.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
                     <SkewTransform/>
                     <RotateTransform Angle="-0.096"/>
                     <TranslateTransform/>
                 </TransformGroup>
-            </Controls:map.RenderTransform>
-        </Controls:map>
+            </Controls:Map.RenderTransform>
+        </Controls:Map>
         <Controls:DashBoard Margin="63.286,-10,-271.143,26.714" Grid.RowSpan="6" Grid.Column="1" Grid.ColumnSpan="2" />
         <Button Name="disconnectButton" Content="Disconnect" HorizontalAlignment="Left" Margin="68,15,0,0" Width="75" Height="20" VerticalAlignment="Top" Click="Button_Click_1" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <TextBox x:Name="serverStatus" Visibility="Hidden" BorderThickness="0" Text="{Binding VM_Connected, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" TextChanged="serverStatus_TextChanged" Grid.ColumnSpan="2" Margin="0,0,91,0" Grid.RowSpan="2" />
+        <TextBox x:Name="serverStatus" Visibility="Hidden" BorderThickness="0" Text="{Binding VM_Connected, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" TextChanged="ServerStatus_TextChanged" Grid.ColumnSpan="2" Margin="0,0,91,0" Grid.RowSpan="2" />
 
         <Label x:Name="Status" BorderThickness="5" BorderBrush="AliceBlue" FontSize="14" HorizontalAlignment="Left" Height="138" Margin="-401,33.714,0,0" Grid.Row="2" Content="{Binding VM_Status, UpdateSourceTrigger=PropertyChanged,Mode=OneWay}" VerticalAlignment="Top" Width="549" Grid.ColumnSpan="2" Grid.RowSpan="4"/>
         <Label Content="Welcome To Flightear Controller Desktop App!!" FontSize="17" HorizontalAlignment="Left" Margin="-401,9,0,0" VerticalAlignment="Top" Width="358" Grid.RowSpan="2"/>
